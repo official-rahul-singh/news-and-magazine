@@ -1,0 +1,129 @@
+.instagram {
+  padding-block: 2.5rem 3rem;
+}
+
+.instagram__intro {
+  max-width: 36rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.instagram__handle {
+  margin: 0 0 .5rem;
+  font-family: $headings-font-family;
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: $secondary;
+}
+
+.instagram__tagline {
+  margin: 0;
+  font-family: $font-family-sans-serif;
+  font-size: clamp(1rem, .95rem + .3vw, 1.2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: mix($white, $secondary, 35%);
+}
+
+.instagram__gallery {
+  position: relative;
+}
+
+.instagram__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.instagram__item {
+  margin: 0;
+}
+
+.instagram__link {
+  display: block;
+  overflow: hidden;
+  border-radius: $border-radius-lg;
+  aspect-ratio: 4 / 5;
+  background: $placeholder-bg;
+  cursor: pointer;
+
+  &:hover .instagram__image,
+  &:focus-visible .instagram__image {
+    transform: scale(1.05);
+  }
+}
+
+.instagram__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.instagram__cta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  min-height: 2.75rem;
+  padding: .55rem 1.15rem;
+  font-size: .9375rem;
+  font-weight: 600;
+  color: $secondary;
+  text-decoration: none;
+  background: $white;
+  border-radius: .65rem;
+  box-shadow: 0 .5rem 1.5rem rgba($secondary, .18);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: color .2s ease, box-shadow .2s ease, transform .2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: $primary;
+    box-shadow: 0 .65rem 1.75rem rgba($secondary, .22);
+    transform: translate(-50%, -50%) translateY(-.1rem);
+  }
+}
+
+.instagram__cta-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .instagram__link:hover .instagram__image,
+  .instagram__link:focus-visible .instagram__image {
+    transform: none;
+  }
+
+  .instagram__cta:hover,
+  .instagram__cta:focus-visible {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .instagram__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .instagram__list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: .85rem;
+  }
+
+  .instagram__link {
+    aspect-ratio: 3 / 4;
+  }
+}

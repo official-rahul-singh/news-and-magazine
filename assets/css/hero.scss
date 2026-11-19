@@ -1,0 +1,170 @@
+// Homepage 2
+@keyframes zoomEffect {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  100% {
+    transform: scale(1.05) rotate(.5deg);
+  }
+}
+
+@keyframes heroBgZoom {
+  0% {
+    transform: scaleX(var(--hero-bg-flip)) scale(1.15);
+  }
+
+  100% {
+    transform: scaleX(var(--hero-bg-flip)) scale(1);
+  }
+}
+
+.home-two {
+  .hero-slide__bg {
+    --hero-bg-flip: 1;
+    transform: scaleX(var(--hero-bg-flip));
+  }
+
+  .swiper-slide-active .hero-slide__bg {
+    animation: heroBgZoom 6s ease-out both;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  .hero-slide__lines {
+    animation: zoomEffect 8s ease-in-out infinite alternate;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  .hero-slide {
+    position: relative;
+    padding-top: $section-gap-sm + $header-overlap;
+    padding-bottom: $section-gap-sm + 2.5rem;
+    isolation: isolate;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba($hero-bg, .88);
+    }
+  }
+
+  .hero-slider__pagination {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    gap: .75rem;
+    transform: translateX(-50%);
+  }
+
+  .hero-slider__dot {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: transparent;
+    border: 1.5px solid rgba($secondary, .35);
+    border-radius: 50%;
+    transition: background-color .3s ease, border-color .3s ease;
+
+    &::before {
+      content: "";
+      width: .3125rem;
+      height: .3125rem;
+      background: $secondary;
+      border-radius: 50%;
+    }
+
+    // Keeps a 44px tap target around the smaller mobile dot
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -.375rem;
+    }
+
+    &:hover {
+      background: rgba($secondary, .08);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $primary;
+      outline-offset: 2px;
+    }
+  }
+
+  .hero-slider__dot--active,
+  .hero-slider__dot--active:hover {
+    background: rgba($secondary, .15);
+    border-color: transparent;
+  }
+
+  @include media-breakpoint-up(md) {
+    .hero-slide {
+      min-height: 48rem;
+      padding-top: $section-gap + $header-overlap;
+      padding-bottom: $section-gap;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .hero-slide {
+      padding-top: $section-gap + $header-overlap-lg;
+
+      &::after {
+        background: linear-gradient(90deg, rgba($hero-bg, .96) 0%, rgba($hero-bg, .85) 45%, rgba($hero-bg, .15) 100%);
+      }
+    }
+
+    .hero-slide__bg--flip {
+      --hero-bg-flip: -1;
+    }
+
+    .hero-slider__pagination {
+      top: 50%;
+      right: clamp(1rem, 4vw, 4rem);
+      bottom: auto;
+      left: auto;
+      flex-direction: column;
+      gap: .75rem;
+      transform: translateY(-50%);
+    }
+
+    .hero-slider__dot {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-color: rgba($white, .85);
+
+      &::before {
+        width: .375rem;
+        height: .375rem;
+        background: $white;
+      }
+
+      &::after {
+        content: none;
+      }
+
+      &:hover {
+        background: rgba($white, .15);
+      }
+    }
+
+    .hero-slider__dot--active,
+    .hero-slider__dot--active:hover {
+      background: rgba($white, .35);
+      border-color: transparent;
+    }
+  }
+}
