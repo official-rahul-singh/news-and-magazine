@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,55 +10,64 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
       rel="stylesheet"
     />
+    <script>
+      (() => {
+        const stored = localStorage.getItem('theme')
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        const theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-bs-theme', theme)
+      })()
+    </script>
   </head>
   <body>
     <header class="header">
       <div class="header__top">
         <div class="container">
-          <div class="header__top-inner d-flex align-items-center justify-content-between gap-3 py-2 small">
-            <p class="header__welcome d-inline-flex align-items-center gap-2 mb-0 lh-sm">
-              <svg class="header__welcome-icon icon flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-10.5Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          <div class="d-flex align-items-center justify-content-between gap-3 py-2 small">
+            <p class="d-inline-flex align-items-center gap-2 mb-0 lh-sm fw-medium">
+              <svg class="icon flex-shrink-0" width="16" height="16" viewBox="0 0 460.298 460.297" fill="currentColor" aria-hidden="true">
+                <path d="M230.149 120.939 65.986 256.274c0 .191-.048.472-.144.855-.094.38-.144.656-.144.852v137.041c0 4.948 1.809 9.236 5.426 12.847 3.616 3.613 7.898 5.431 12.847 5.431h109.63V303.664h73.097v109.64h109.629c4.948 0 9.236-1.814 12.847-5.435 3.617-3.607 5.432-7.898 5.432-12.847V257.981c0-.76-.104-1.334-.288-1.707z"/>
+                <path d="M457.122 225.438 394.6 173.476V56.989q.001-3.995-2.574-6.567-2.558-2.568-6.563-2.568h-54.816q-3.998 0-6.57 2.568-2.566 2.573-2.566 6.567v55.673l-69.662-58.245c-6.084-4.949-13.318-7.423-21.694-7.423q-12.563 0-21.698 7.423L3.172 225.438c-1.903 1.52-2.946 3.566-3.14 6.136-.193 2.568.472 4.811 1.997 6.713l17.701 21.128c1.525 1.712 3.521 2.759 5.996 3.142q3.428.286 6.855-1.998L230.149 95.817l197.57 164.741c1.526 1.328 3.521 1.991 5.996 1.991h.858c2.471-.376 4.463-1.43 5.996-3.138l17.703-21.125c1.522-1.906 2.189-4.145 1.991-6.716q-.293-3.846-3.141-6.132"/>
               </svg>
               Welcome to newsfy - WordPress News Magazine Theme
             </p>
             <div class="header__social d-inline-flex align-items-center gap-2 flex-shrink-0">
-              <span class="header__social-label fw-medium">Follow Us:</span>
-              <ul class="header__social-list d-flex align-items-center gap-1 list-unstyled mb-0">
+              <span class="fw-medium">Follow Us:</span>
+              <ul class="d-flex align-items-center list-unstyled mb-0">
                 <li>
-                  <a class="header__social-link d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="Instagram" aria-label="Instagram">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.75"/>
-                      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.75"/>
-                      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                  <a class="d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="Instagram" aria-label="Instagram">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M4.66666 1.33334H11.3333C13.1743 1.33334 14.6667 2.82573 14.6667 4.66668V11.3333C14.6667 13.1743 13.1743 14.6667 11.3333 14.6667H4.66666C2.82571 14.6667 1.33333 13.1743 1.33333 11.3333V4.66668C1.33333 2.82573 2.82571 1.33334 4.66666 1.33334Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10.6667 7.57999C10.7489 8.13482 10.6542 8.70146 10.3958 9.19933C10.1375 9.6972 9.72876 10.1009 9.22775 10.3531C8.72674 10.6053 8.15897 10.6931 7.60519 10.6039C7.05142 10.5148 6.53984 10.2534 6.14323 9.85676C5.74661 9.46015 5.48516 8.94857 5.39605 8.3948C5.30694 7.84102 5.39471 7.27325 5.64688 6.77224C5.89906 6.27122 6.30279 5.86248 6.80066 5.60415C7.29852 5.34582 7.86517 5.25105 8.42 5.33332C8.98595 5.41724 9.5099 5.68096 9.91446 6.08553C10.319 6.49009 10.5827 7.01404 10.6667 7.57999Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M11.6667 4.33334H11.6733" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </a>
                 </li>
                 <li>
-                  <a class="header__social-link d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="Facebook" aria-label="Facebook">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/>
+                  <a class="d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="Facebook" aria-label="Facebook">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M14.6539 11.25L15.2094 7.63047H11.7363V5.28164C11.7363 4.29141 12.2215 3.32617 13.7769 3.32617H15.3559V0.244531C15.3559 0.244531 13.923 0 12.5531 0C9.69296 0 7.82343 1.73359 7.82343 4.87187V7.63047H4.64413V11.25H7.82343V20H11.7363V11.25H14.6539Z"/>
                     </svg>
                   </a>
                 </li>
                 <li>
-                  <a class="header__social-link d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="Telegram" aria-label="Telegram">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M21.5 4.5 2.8 11.7c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.7.4.9 1 .9.5 0 .8-.2 1.1-.5l2.7-2.6 5.6 4.1c1 .6 1.8.3 2-.9L23 5.8c.3-1.3-.5-1.9-1.5-1.3Z"/>
+                  <a class="d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="Twitter" aria-label="Twitter">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M12.1625 1.5H14.3688L9.55 7.00625L15.2188 14.5H10.7813L7.30313 9.95625L3.32813 14.5H1.11875L6.27188 8.60938L0.837502 1.5H5.3875L8.52813 5.65312L12.1625 1.5ZM11.3875 13.1812H12.6094L4.72188 2.75H3.40938L11.3875 13.1812Z"/>
                     </svg>
                   </a>
                 </li>
                 <li>
-                  <a class="header__social-link d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="TikTok" aria-label="TikTok">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M16.5 3c.4 2.4 1.8 4 4.2 4.3v3.1c-1.5 0-2.9-.4-4.2-1.2v5.7a6.1 6.1 0 1 1-6.1-6.1c.3 0 .7 0 1 .1v3.2a2.9 2.9 0 1 0 2 2.8V3h3.1Z"/>
+                  <a class="d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="LinkedIn" aria-label="LinkedIn">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M14.6393 9.14601V14.0653H11.7873V9.47534C11.7873 8.32201 11.3747 7.53534 10.3427 7.53534C9.55466 7.53534 9.08533 8.06601 8.87933 8.57868C8.804 8.76201 8.78466 9.01734 8.78466 9.27401V14.0653H5.93133C5.93133 14.0653 5.97 6.29201 5.93133 5.48601H8.78466V6.70201L8.766 6.73001H8.78466V6.70201C9.16333 6.11868 9.84 5.28468 11.3553 5.28468C13.232 5.28468 14.6393 6.51134 14.6393 9.14601ZM2.94733 1.35068C1.97199 1.35068 1.33333 1.99068 1.33333 2.83268C1.33333 3.65601 1.95333 4.31534 2.90999 4.31534H2.92866C3.924 4.31534 4.542 3.65601 4.542 2.83268C4.52466 1.99068 3.924 1.35068 2.94733 1.35068ZM1.50266 14.0653H4.35466V5.48601H1.50266V14.0653Z"/>
                     </svg>
                   </a>
                 </li>
                 <li>
-                  <a class="header__social-link d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="YouTube" aria-label="YouTube">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M22.5 7.2a3 3 0 0 0-2.1-2.1C18.5 4.6 12 4.6 12 4.6s-6.5 0-8.4.5A3 3 0 0 0 1.5 7.2 31 31 0 0 0 1 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.4.5 8.4.5s6.5 0 8.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23 12a31 31 0 0 0-.5-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/>
+                  <a class="d-inline-flex align-items-center justify-content-center rounded-circle" href="#" title="YouTube" aria-label="YouTube">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 310 310" fill="currentColor" aria-hidden="true">
+                      <path d="M297.917 64.645c-11.19-13.302-31.85-18.728-71.306-18.728H83.386c-40.359 0-61.369 5.776-72.517 19.938C0 79.663 0 100.008 0 128.166v53.669c0 54.551 12.896 82.248 83.386 82.248h143.226c34.216 0 53.176-4.788 65.442-16.527C304.633 235.518 310 215.863 310 181.835v-53.669c0-29.695-.841-50.16-12.083-63.521m-98.896 97.765-65.038 33.991a9.997 9.997 0 0 1-14.632-8.863v-67.764a10 10 0 0 1 14.609-8.874l65.038 33.772a10 10 0 0 1 .023 17.738"/>
                     </svg>
                   </a>
                 </li>
@@ -71,9 +80,9 @@
       <div class="header__bottom">
         <div class="container">
           <div class="header__bottom-inner">
-            <a class="header__logo" href="/" title="Newsfy">
-              <span class="header__logo-mark" aria-hidden="true"></span>
-              <span class="header__logo-text">Newsfy</span>
+            <a class="header__logo d-inline-flex align-items-center flex-shrink-0 text-decoration-none" href="/" title="Newsfy">
+              <img class="header__logo-img header__logo-img--light" src="assets/images/logo.svg" alt="Newsfy" width="135" height="33">
+              <img class="header__logo-img header__logo-img--dark" src="assets/images/logo-white.svg" alt="Newsfy" width="135" height="33">
             </a>
 
             <nav class="navigations" id="primary-nav" aria-label="Primary">
@@ -145,23 +154,26 @@
                 </button>
               </form>
 
-              <button class="header__theme" type="button" aria-label="Toggle color theme" data-theme-toggle>
-                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.75"/>
-                  <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+              <button class="header__theme" type="button" aria-label="Switch to dark mode" data-theme-toggle>
+                <svg class="header__theme-icon header__theme-icon--sun" width="20" height="20" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true">
+                  <circle cx="256" cy="256" r="128"/>
+                  <path d="M256 76.791c-14.137 0-25.6-11.463-25.6-25.6V25.6C230.4 11.463 241.863 0 256 0s25.6 11.463 25.6 25.6v25.591c0 14.137-11.463 25.6-25.6 25.6M400.825 136.778c-6.55 0-13.1-2.497-18.1-7.494-10-9.994-10-26.203-.012-36.203L400.8 74.984c10-10 26.212-10.003 36.212-.009s10 26.203.012 36.203l-18.088 18.097c-4.998 5.003-11.561 7.503-18.111 7.503M486.4 281.6h-25.588c-14.137 0-25.6-11.463-25.6-25.6s11.463-25.6 25.6-25.6H486.4c14.137 0 25.6 11.463 25.6 25.6s-11.463 25.6-25.6 25.6M418.913 444.519c-6.55 0-13.112-2.5-18.113-7.503l-18.088-18.097c-9.988-10-9.988-26.209.012-36.203s26.212-9.997 36.212.009l18.088 18.097c9.988 10 9.988 26.209-.012 36.203a25.52 25.52 0 0 1-18.099 7.494M256 512c-14.137 0-25.6-11.463-25.6-25.6v-25.591c0-14.137 11.463-25.6 25.6-25.6s25.6 11.463 25.6 25.6V486.4c0 14.137-11.463 25.6-25.6 25.6M93.087 444.519c-6.55 0-13.1-2.497-18.1-7.494-10-9.994-10-26.203-.012-36.203l18.088-18.097c10-10.006 26.213-10.003 36.213-.009s10 26.203.012 36.203L111.2 437.016c-5 5-11.563 7.503-18.113 7.503M51.188 281.6H25.6C11.463 281.6 0 270.137 0 256s11.463-25.6 25.6-25.6h25.588c14.137 0 25.6 11.463 25.6 25.6s-11.463 25.6-25.6 25.6M111.175 136.778c-6.55 0-13.112-2.5-18.113-7.503l-18.088-18.097c-9.988-10-9.988-26.209.012-36.203s26.213-9.997 36.213.009l18.088 18.097c9.988 10 9.988 26.209-.012 36.203a25.52 25.52 0 0 1-18.1 7.494"/>
+                </svg>
+                <svg class="header__theme-icon header__theme-icon--moon" width="18" height="18" viewBox="0 0 140.352 145.384" fill="currentColor" aria-hidden="true">
+                  <path d="M72.682 145.384c29.814-.02 56.481-18.23 67.451-45.74.609-1.527-.1-2.105-1.558-1.346a58.66 58.66 0 0 1-27.062 6.628c-32.398.002-58.662-26.262-58.66-58.66A58.66 58.66 0 0 1 73.083 1.98C74.607.505 74.168-.178 71.162.04 33.005.302 0 32.563 0 72.704s32.54 72.682 72.682 72.68"/>
                 </svg>
               </button>
 
               <button
                 class="header__toggler"
                 type="button"
-                aria-controls="primary-nav"
+                aria-controls="site-sidebar"
                 aria-expanded="false"
-                aria-label="Open menu"
-                data-nav-toggle
+                aria-label="Open sidebar"
+                data-sidebar-toggle
               >
-                <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                <svg class="icon" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M3 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m0 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m0 5a1 1 0 0 1 1-1h6a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1"/>
                 </svg>
               </button>
             </div>
@@ -170,148 +182,219 @@
       </div>
     </header>
 
-    <section class="ticker" aria-label="Trending news">
-      <div class="container">
-        <div class="ticker__bar">
-          <time class="ticker__date" datetime="2026-11-17">
-            <span class="ticker__day">17</span>
-            <span class="ticker__month-year">
-              <span class="ticker__month">Nov</span>
-              <span class="ticker__year">2026</span>
-            </span>
-          </time>
-
-          <span class="ticker__badge">
-            <span class="ticker__live" aria-hidden="true"></span>
-            Trending News
-          </span>
-
-          <div class="ticker__headline-wrap" aria-live="polite">
-            <p class="ticker__headline" data-ticker-headline>
-              Bitcoin Lightning Payment Volume Increased 400% In A Year
-            </p>
-          </div>
-
-          <div class="ticker__nav">
-            <button class="ticker__nav-btn" type="button" aria-label="Previous trending story" data-ticker-prev>
-              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M15 6 9 12l6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <button class="ticker__nav-btn" type="button" aria-label="Next trending story" data-ticker-next>
-              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </div>
+    <div class="sidebar-backdrop" data-sidebar-backdrop hidden></div>
+    <aside class="site-sidebar" id="site-sidebar" aria-label="About sidebar" aria-hidden="true">
+      <div class="site-sidebar__header">
+        <a class="site-sidebar__logo" href="/" title="Newsfy">
+          <img class="header__logo-img header__logo-img--light" src="assets/images/logo.svg" alt="Newsfy" width="135" height="33">
+          <img class="header__logo-img header__logo-img--dark" src="assets/images/logo-white.svg" alt="Newsfy" width="135" height="33">
+        </a>
+        <button class="site-sidebar__close" type="button" aria-label="Close sidebar" data-sidebar-close>
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+        </button>
       </div>
-    </section>
+
+      <div class="site-sidebar__body">
+        <section class="site-sidebar__about">
+          <h2 class="site-sidebar__title">About</h2>
+          <p class="site-sidebar__text">
+            Newsfy is a modern WordPress news magazine theme built for publishers who want clean layouts, fast reading, and stories that stay front and center.
+          </p>
+        </section>
+
+        <nav class="site-sidebar__nav" aria-label="Sidebar">
+          <ul class="site-sidebar__list">
+            <li><a class="site-sidebar__link" href="/" title="Home">Home</a></li>
+            <li>
+              <a class="site-sidebar__link" href="#" title="Technology">
+                Technology
+                <span class="site-sidebar__badge">New</span>
+              </a>
+            </li>
+            <li><a class="site-sidebar__link" href="#" title="Features">Features</a></li>
+            <li><a class="site-sidebar__link" href="#" title="Post Layout">Post Layout</a></li>
+            <li><a class="site-sidebar__link" href="#" title="Contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <section class="site-sidebar__subscribe">
+          <h2 class="site-sidebar__subscribe-title">Subscribe to Updates</h2>
+          <p class="site-sidebar__subscribe-text">Subscribe to our mailing list to get the new updates.</p>
+          <form class="site-sidebar__form" action="#" method="post">
+            <label class="visually-hidden" for="sidebar-email">Email address</label>
+            <input
+              class="site-sidebar__input"
+              id="sidebar-email"
+              type="email"
+              name="email"
+              placeholder="Enter Your Email..."
+              autocomplete="email"
+              required
+            />
+            <button class="site-sidebar__submit" type="submit">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M22 2 11 13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 2 15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Subscribe
+            </button>
+          </form>
+        </section>
+      </div>
+    </aside>
 
     <main>
-      <section class="featured" aria-label="Featured stories">
+      <section class="ticker py-3 d-none d-md-block" aria-label="Trending news">
+        <div class="container">
+          <div class="ticker__bar">
+            <time class="ticker__date" datetime="2026-11-17">
+              <span class="ticker__day">17</span>
+              <span class="ticker__month-year">
+                <span class="ticker__month">Nov</span>
+                <span class="ticker__year">2026</span>
+              </span>
+            </time>
+
+            <span class="ticker__badge">
+              <span class="ticker__live" aria-hidden="true"></span>
+              Trending News
+            </span>
+
+            <div class="ticker__headline-wrap swiper" data-ticker-swiper aria-live="polite">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a class="ticker__headline d-block" href="#" title="Bitcoin Lightning Payment Volume Increased 400% In A Year">
+                    Bitcoin Lightning Payment Volume Increased 400% In A Year
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a class="ticker__headline d-block" href="#" title="Global Markets Rally As Inflation Cools Faster Than Expected">
+                    Global Markets Rally As Inflation Cools Faster Than Expected
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a class="ticker__headline d-block" href="#" title="AI Startups Raise Record Funding In Emerging Tech Hubs">
+                    AI Startups Raise Record Funding In Emerging Tech Hubs
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="ticker__nav">
+              <button class="ticker__nav-btn" type="button" aria-label="Previous trending story" data-ticker-prev>
+                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M15 6 9 12l6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button class="ticker__nav-btn" type="button" aria-label="Next trending story" data-ticker-next>
+                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured py-3 section-gap" aria-label="Featured stories">
         <div class="container">
           <div class="row g-4">
             <div class="col-lg-8 col-xl-9">
               <div class="featured__main">
                 <div class="featured__slider swiper" data-featured-swiper>
                   <div class="swiper-wrapper">
-                    <article class="featured__slide swiper-slide">
+                    <article class="cover-card cover-card--featured swiper-slide">
                       <img
-                        class="featured__image"
+                        class="cover-card__image"
                         src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1400&q=80"
                         alt="Desk setup with keyboard, monitor, and speakers"
                         width="1200"
                         height="700"
                       />
-                      <div class="featured__overlay" aria-hidden="true"></div>
-                      <div class="featured__content">
-                        <div class="featured__meta-row">
-                          <span class="featured__category">Apps</span>
-                          <time class="featured__date" datetime="2025-10-02">October 2, 2025</time>
+                      <div class="cover-card__overlay" aria-hidden="true"></div>
+                      <div class="cover-card__body">
+                        <div class="cover-card__meta-row">
+                          <span class="cover-card__category">Apps</span>
+                          <time class="cover-card__date" datetime="2025-10-02">October 2, 2025</time>
                         </div>
-                        <h2 class="featured__title">
-                          <a class="featured__title-link" href="#">
+                        <h2 class="cover-card__heading">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">
                             Discover Exclusive Laptop Deals that Define Premium Quality
                           </a>
                         </h2>
-                        <p class="featured__author">
-                          <img
-                            class="featured__avatar"
-                            src="https://i.pravatar.cc/64?img=12"
-                            alt=""
-                            width="32"
-                            height="32"
-                          />
-                          <span>By Denis Schmidt</span>
+                        <p class="cover-card__author">
+                          <a class="cover-card__author-link" href="#" title="Denis Schmidt">
+                            <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                              <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                            </svg>
+                            <span>By Denis Schmidt</span>
+                          </a>
                           <span aria-hidden="true">·</span>
                           <time datetime="2025-10-02">October 2, 2025</time>
                         </p>
                       </div>
                     </article>
 
-                    <article class="featured__slide swiper-slide">
+                    <article class="cover-card cover-card--featured swiper-slide">
                       <img
-                        class="featured__image"
+                        class="cover-card__image"
                         src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1400&q=80"
                         alt="Smartphone held in hand with colorful screen"
                         width="1200"
                         height="700"
                       />
-                      <div class="featured__overlay" aria-hidden="true"></div>
-                      <div class="featured__content">
-                        <div class="featured__meta-row">
-                          <span class="featured__category">Gadgets</span>
-                          <time class="featured__date" datetime="2025-09-11">September 11, 2025</time>
+                      <div class="cover-card__overlay" aria-hidden="true"></div>
+                      <div class="cover-card__body">
+                        <div class="cover-card__meta-row">
+                          <span class="cover-card__category">Gadgets</span>
+                          <time class="cover-card__date" datetime="2025-09-11">September 11, 2025</time>
                         </div>
-                        <h2 class="featured__title">
-                          <a class="featured__title-link" href="#">
+                        <h2 class="cover-card__heading">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">
                             Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!
                           </a>
                         </h2>
-                        <p class="featured__author">
-                          <img
-                            class="featured__avatar"
-                            src="https://i.pravatar.cc/64?img=32"
-                            alt=""
-                            width="32"
-                            height="32"
-                          />
-                          <span>By Alex Morgan</span>
+                        <p class="cover-card__author">
+                          <a class="cover-card__author-link" href="#" title="Alex Morgan">
+                            <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                              <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                            </svg>
+                            <span>By Alex Morgan</span>
+                          </a>
                           <span aria-hidden="true">·</span>
                           <time datetime="2025-09-11">September 11, 2025</time>
                         </p>
                       </div>
                     </article>
 
-                    <article class="featured__slide swiper-slide">
+                    <article class="cover-card cover-card--featured swiper-slide">
                       <img
-                        class="featured__image"
+                        class="cover-card__image"
                         src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80"
                         alt="Abstract artificial intelligence visualization"
                         width="1200"
                         height="700"
                       />
-                      <div class="featured__overlay" aria-hidden="true"></div>
-                      <div class="featured__content">
-                        <div class="featured__meta-row">
-                          <span class="featured__category">AI</span>
-                          <time class="featured__date" datetime="2025-09-02">September 2, 2025</time>
+                      <div class="cover-card__overlay" aria-hidden="true"></div>
+                      <div class="cover-card__body">
+                        <div class="cover-card__meta-row">
+                          <span class="cover-card__category">AI</span>
+                          <time class="cover-card__date" datetime="2025-09-02">September 2, 2025</time>
                         </div>
-                        <h2 class="featured__title">
-                          <a class="featured__title-link" href="#">
+                        <h2 class="cover-card__heading">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">
                             Artificial Intelligence Can Actually Help Save Your Modern Life
                           </a>
                         </h2>
-                        <p class="featured__author">
-                          <img
-                            class="featured__avatar"
-                            src="https://i.pravatar.cc/64?img=45"
-                            alt=""
-                            width="32"
-                            height="32"
-                          />
-                          <span>By Priya Nair</span>
+                        <p class="cover-card__author">
+                          <a class="cover-card__author-link" href="#" title="Priya Nair">
+                            <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                              <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                            </svg>
+                            <span>By Priya Nair</span>
+                          </a>
                           <span aria-hidden="true">·</span>
                           <time datetime="2025-09-02">September 2, 2025</time>
                         </p>
@@ -322,57 +405,60 @@
                   <div class="featured__dots swiper-pagination" aria-label="Featured slides"></div>
                 </div>
 
-                <div class="row g-3 featured__thumbs">
+                <div class="row g-3 featured__thumbs d-none d-md-flex">
                   <div class="col-md-4">
-                    <button class="featured-thumb featured-thumb--active w-100" type="button" data-featured-thumb="0" aria-pressed="true">
-                      <span class="featured-thumb__media">
-                        <img
-                          class="featured-thumb__image"
+                    <article class="post-card post-card--compact">
+                      <div class="post-card__media">
+                      <a class="post-card__media-link" href="#" title="Discover Exclusive Laptop Deals that Define Premium Quality" tabindex="-1" aria-hidden="true">
+                        <img class="post-card__image"
                           src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=200&q=80"
                           alt=""
                           width="72"
                           height="72"
                         />
-                      </span>
-                      <span class="featured-thumb__body">
-                        <span class="featured-thumb__title">Discover Exclusive Laptop Deals that Define Premium Quality</span>
-                        <time class="featured-thumb__date" datetime="2025-10-02">October 2, 2025</time>
-                      </span>
-                    </button>
+                      </a>
+                    </div>
+                      <div class="post-card__body">
+                        <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Discover Exclusive Laptop Deals that Define Premium Quality">Discover Exclusive Laptop Deals that Define Premium Quality</a>
+                        <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Denis Schmidt</a>
+                      </div>
+                    </article>
                   </div>
                   <div class="col-md-4">
-                    <button class="featured-thumb w-100" type="button" data-featured-thumb="1" aria-pressed="false">
-                      <span class="featured-thumb__media">
-                        <img
-                          class="featured-thumb__image"
+                    <article class="post-card post-card--compact">
+                      <div class="post-card__media">
+                      <a class="post-card__media-link" href="#" title="Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!" tabindex="-1" aria-hidden="true">
+                        <img class="post-card__image"
                           src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=200&q=80"
                           alt=""
                           width="72"
                           height="72"
                         />
-                      </span>
-                      <span class="featured-thumb__body">
-                        <span class="featured-thumb__title">Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!</span>
-                        <time class="featured-thumb__date" datetime="2025-09-11">September 11, 2025</time>
-                      </span>
-                    </button>
+                      </a>
+                    </div>
+                      <div class="post-card__body">
+                        <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!">Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!</a>
+                        <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Alex Morgan</a>
+                      </div>
+                    </article>
                   </div>
                   <div class="col-md-4">
-                    <button class="featured-thumb w-100" type="button" data-featured-thumb="2" aria-pressed="false">
-                      <span class="featured-thumb__media">
-                        <img
-                          class="featured-thumb__image"
+                    <article class="post-card post-card--compact">
+                      <div class="post-card__media">
+                      <a class="post-card__media-link" href="#" title="Artificial Intelligence Can Actually Help Save Your Modern Life" tabindex="-1" aria-hidden="true">
+                        <img class="post-card__image"
                           src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=200&q=80"
                           alt=""
                           width="72"
                           height="72"
                         />
-                      </span>
-                      <span class="featured-thumb__body">
-                        <span class="featured-thumb__title">Artificial Intelligence Can Actually Help Save Your Modern Life</span>
-                        <time class="featured-thumb__date" datetime="2025-09-02">September 2, 2025</time>
-                      </span>
-                    </button>
+                      </a>
+                    </div>
+                      <div class="post-card__body">
+                        <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Artificial Intelligence Can Actually Help Save Your Modern Life">Artificial Intelligence Can Actually Help Save Your Modern Life</a>
+                        <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Priya Nair</a>
+                      </div>
+                    </article>
                   </div>
                 </div>
               </div>
@@ -380,32 +466,54 @@
 
             <div class="col-lg-4 col-xl-3">
               <aside class="latest-news" aria-labelledby="latest-news-title">
-                <h2 class="latest-news__title" id="latest-news-title">Latest News</h2>
+                <div class="tech-news__head">
+                  <h2 class="tech-news__badge" id="latest-news-title">
+                    <span class="tech-news__badge-dot" aria-hidden="true"></span>
+                    Latest News
+                  </h2>
+                </div>
                 <ol class="latest-news__list">
                   <li class="latest-news__item">
                     <span class="latest-news__dot latest-news__dot--green" aria-hidden="true"></span>
-                    <time class="latest-news__date" datetime="2025-10-02">October 2, 2025</time>
-                    <a class="latest-news__link" href="#">Discover Exclusive Laptop Deals that Define Premium Quality</a>
+                    <div class="post-thumb__body min-w-0">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Discover Exclusive Laptop Deals that Define Premium Quality">Discover Exclusive Laptop Deals that Define Premium Quality</a>
+                      <time class="post-thumb__date small mb-0 d-block" datetime="2025-10-02">October 2, 2025</time>
+                    </div>
                   </li>
                   <li class="latest-news__item">
                     <span class="latest-news__dot latest-news__dot--yellow" aria-hidden="true"></span>
-                    <time class="latest-news__date" datetime="2025-09-11">September 11, 2025</time>
-                    <a class="latest-news__link" href="#">Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!</a>
+                    <div class="post-thumb__body min-w-0">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!">Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!</a>
+                      <time class="post-thumb__date small mb-0 d-block" datetime="2025-09-11">September 11, 2025</time>
+                    </div>
                   </li>
                   <li class="latest-news__item">
                     <span class="latest-news__dot latest-news__dot--red" aria-hidden="true"></span>
-                    <time class="latest-news__date" datetime="2025-09-02">September 2, 2025</time>
-                    <a class="latest-news__link" href="#">Artificial Intelligence Can Actually Help Save Your Modern Life</a>
+                    <div class="post-thumb__body min-w-0">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Artificial Intelligence Can Actually Help Save Your Modern Life">Artificial Intelligence Can Actually Help Save Your Modern Life</a>
+                      <time class="post-thumb__date small mb-0 d-block" datetime="2025-09-02">September 2, 2025</time>
+                    </div>
                   </li>
                   <li class="latest-news__item">
                     <span class="latest-news__dot latest-news__dot--green" aria-hidden="true"></span>
-                    <time class="latest-news__date" datetime="2025-08-28">August 28, 2025</time>
-                    <a class="latest-news__link" href="#">Why Foldable Phones Are Finally Ready for Everyday Use</a>
+                    <div class="post-thumb__body min-w-0">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Why Foldable Phones Are Finally Ready for Everyday Use">Why Foldable Phones Are Finally Ready for Everyday Use</a>
+                      <time class="post-thumb__date small mb-0 d-block" datetime="2025-08-28">August 28, 2025</time>
+                    </div>
                   </li>
                   <li class="latest-news__item">
                     <span class="latest-news__dot latest-news__dot--yellow" aria-hidden="true"></span>
-                    <time class="latest-news__date" datetime="2025-08-15">August 15, 2025</time>
-                    <a class="latest-news__link" href="#">Smart Home Gadgets That Quietly Upgrade Your Routine</a>
+                    <div class="post-thumb__body min-w-0">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Smart Home Gadgets That Quietly Upgrade Your Routine">Smart Home Gadgets That Quietly Upgrade Your Routine</a>
+                      <time class="post-thumb__date small mb-0 d-block" datetime="2025-08-15">August 15, 2025</time>
+                    </div>
+                  </li>
+                  <li class="latest-news__item">
+                    <span class="latest-news__dot latest-news__dot--red" aria-hidden="true"></span>
+                    <div class="post-thumb__body min-w-0">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Electric Cars Are Changing How Cities Plan for Tomorrow">Electric Cars Are Changing How Cities Plan for Tomorrow</a>
+                      <time class="post-thumb__date small mb-0 d-block" datetime="2025-08-07">August 7, 2025</time>
+                    </div>
                   </li>
                 </ol>
               </aside>
@@ -414,7 +522,7 @@
         </div>
       </section>
 
-      <section class="popular-tags" aria-label="Popular tags">
+      <section class="popular-tags section-gap" aria-label="Popular tags">
         <div class="container">
           <div class="popular-tags__bar">
             <p class="popular-tags__label">Popular Tags:</p>
@@ -488,663 +596,1101 @@
         </div>
       </section>
 
-      <section class="tech-news" aria-labelledby="tech-news-title">
+      <section class="tech-news section-gap" aria-labelledby="tech-news-title">
         <div class="container">
           <div class="tech-news__head">
-            <h2 class="tech-news__title" id="tech-news-title">Technology News</h2>
-            <span class="tech-news__badge">
+            <h2 class="tech-news__badge" id="tech-news-title">
               <span class="tech-news__badge-dot" aria-hidden="true"></span>
-              Latest News
-            </span>
-            <ul class="tech-news__filters" role="list">
-              <li>
-                <button class="tech-news__filter tech-news__filter--active" type="button" data-tech-filter>Science</button>
+              Tech News
+            </h2>
+            <ul class="tech-news__filters" role="tablist" aria-label="Tech news categories">
+              <li role="presentation">
+                <button class="tech-news__filter tech-news__filter--active" type="button" role="tab" aria-selected="true" data-tech-filter="science" aria-controls="tech-panel-science">Science</button>
               </li>
-              <li>
-                <button class="tech-news__filter" type="button" data-tech-filter>Fashion</button>
+              <li role="presentation">
+                <button class="tech-news__filter" type="button" role="tab" aria-selected="false" data-tech-filter="fashion" aria-controls="tech-panel-fashion">Fashion</button>
               </li>
-              <li>
-                <button class="tech-news__filter" type="button" data-tech-filter>Sports</button>
+              <li role="presentation">
+                <button class="tech-news__filter" type="button" role="tab" aria-selected="false" data-tech-filter="sports" aria-controls="tech-panel-sports">Sports</button>
               </li>
             </ul>
           </div>
 
-          <hr class="tech-news__divider" />
-
+          <div class="tech-news__panels">
+        <div class="tech-news__panel" id="tech-panel-science" role="tabpanel" data-tech-panel="science">
           <div class="row g-4">
             <div class="col-sm-6 col-xl-3">
-              <a class="tech-card" href="#">
+              <article class="cover-card cover-card--tech">
                 <img
-                  class="tech-card__image"
-                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80"
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
                   alt="Hand holding a smartphone"
                   width="400"
                   height="520"
                 />
-                <span class="tech-card__overlay" aria-hidden="true"></span>
-                <span class="tech-card__body">
-                  <span class="tech-card__category tech-card__category--food">
-                    <span class="tech-card__category-icon" aria-hidden="true"></span>
-                    Food
-                  </span>
-                  <span class="tech-card__title">Samsung Launches New 108MP Camera Sensor for Smartphones</span>
-                  <span class="tech-card__author">
-                    <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.75"/>
-                      <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                    </svg>
-                    By Martina Richter
-                  </span>
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Science</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Samsung Launches New 108MP Camera Sensor for Smartphones</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Martina Richter</a>
                 </span>
-              </a>
+              </article>
             </div>
-
             <div class="col-sm-6 col-xl-3">
-              <a class="tech-card" href="#">
+              <article class="cover-card cover-card--tech">
                 <img
-                  class="tech-card__image"
-                  src="https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=800&q=80"
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
                   alt="Person wearing over-ear headphones"
                   width="400"
                   height="520"
                 />
-                <span class="tech-card__overlay" aria-hidden="true"></span>
-                <span class="tech-card__body">
-                  <span class="tech-card__category tech-card__category--news">
-                    <span class="tech-card__category-icon" aria-hidden="true"></span>
-                    News
-                  </span>
-                  <span class="tech-card__title">Report: Screen Time Surge, Teens Facing Mental Health Concerns</span>
-                  <span class="tech-card__author">
-                    <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.75"/>
-                      <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                    </svg>
-                    By Martina Richter
-                  </span>
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Science</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Report: Screen Time Surge, Teens Facing Mental Health Concerns</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Martina Richter</a>
                 </span>
-              </a>
+              </article>
             </div>
-
             <div class="col-sm-6 col-xl-3">
-              <a class="tech-card" href="#">
+              <article class="cover-card cover-card--tech">
                 <img
-                  class="tech-card__image"
-                  src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80"
-                  alt="Studio microphone on a stand"
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  alt="Abstract AI visualization"
                   width="400"
                   height="520"
                 />
-                <span class="tech-card__overlay" aria-hidden="true"></span>
-                <span class="tech-card__body">
-                  <span class="tech-card__category tech-card__category--fashion">
-                    <span class="tech-card__category-icon" aria-hidden="true"></span>
-                    Fashion
-                  </span>
-                  <span class="tech-card__title">Ways to Play Music Using Your Amazon Echo Device</span>
-                  <span class="tech-card__author">
-                    <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.75"/>
-                      <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                    </svg>
-                    By Martina Richter
-                  </span>
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Science</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Artificial Intelligence Can Actually Help Save Your Modern Life</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Priya Nair</a>
                 </span>
-              </a>
+              </article>
             </div>
-
             <div class="col-sm-6 col-xl-3">
-              <a class="tech-card" href="#">
+              <article class="cover-card cover-card--tech">
                 <img
-                  class="tech-card__image"
-                  src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=800&q=80"
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  alt="Earth from space"
+                  width="400"
+                  height="520"
+                />
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Science</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">New Space Telescope Reveals Secrets of Distant Galaxies</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Denis Schmidt</a>
+                </span>
+              </article>
+            </div>
+          </div>
+
+          <div class="row tech-news__ranks">
+            <div class="col-sm-6 col-xl-3">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Get One of the Best VR Games Free on Epic Games Store">Get One of the Best VR Games Free on Epic Games Store</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Denis Schmidt</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="Get One of the Best VR Games Free on Epic Games Store" tabindex="-1" aria-hidden="true">
+                  <img
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
+                    alt=""
+                    width="72"
+                    height="72"
+                  />
+                  <span class="post-thumb__badge">1</span>
+                </a>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Digital Calendars &amp; Organizers to Get You Organized">Digital Calendars &amp; Organizers to Get You Organized</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Martina Richter</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="Digital Calendars &amp; Organizers to Get You Organized" tabindex="-1" aria-hidden="true">
+                  <img
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
+                    alt=""
+                    width="72"
+                    height="72"
+                  />
+                  <span class="post-thumb__badge">2</span>
+                </a>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Tech Leaders Highlight 15 Industries AI and VR Will Disrupt">Tech Leaders Highlight 15 Industries AI and VR Will Disrupt</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Hannah Ziegler</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="Tech Leaders Highlight 15 Industries AI and VR Will Disrupt" tabindex="-1" aria-hidden="true">
+                  <img
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
+                    alt=""
+                    width="72"
+                    height="72"
+                  />
+                  <span class="post-thumb__badge">3</span>
+                </a>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Guide to Nutritious Breakfast Options for Increased Energy">Guide to Nutritious Breakfast Options for Increased Energy</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Priya Nair</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="Guide to Nutritious Breakfast Options for Increased Energy" tabindex="-1" aria-hidden="true">
+                  <img
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
+                    alt=""
+                    width="72"
+                    height="72"
+                  />
+                  <span class="post-thumb__badge">4</span>
+                </a>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-news__panel" id="tech-panel-fashion" role="tabpanel" data-tech-panel="fashion" hidden aria-hidden="true">
+          <div class="row g-4">
+            <div class="col-sm-6 col-xl-3">
+              <article class="cover-card cover-card--tech">
+                <img
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  alt="Fashion model on a city street"
+                  width="400"
+                  height="520"
+                />
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Fashion</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Distinguished Brands Setting Extraordinary Styles This Season</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Hannah Ziegler</a>
+                </span>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="cover-card cover-card--tech">
+                <img
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  alt="Flat lay of fashion accessories"
+                  width="400"
+                  height="520"
+                />
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Fashion</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Minimal Wardrobe Essentials Every Editor Is Recommending</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Martina Richter</a>
+                </span>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="cover-card cover-card--tech">
+                <img
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  alt="Runway fashion show"
+                  width="400"
+                  height="520"
+                />
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Fashion</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Runway Recap: Bold Colors Dominate Spring Collections</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Alex Morgan</a>
+                </span>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="cover-card cover-card--tech">
+                <img
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  alt="Clothing racks in a boutique"
+                  width="400"
+                  height="520"
+                />
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Fashion</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Sustainable Fabrics Are Changing How Designers Create</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Priya Nair</a>
+                </span>
+              </article>
+            </div>
+          </div>
+
+          <div class="row tech-news__ranks">
+            <div class="col-sm-6 col-xl-3">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="If You Believe Failure Is Painful, Try Never Trying At All">If You Believe Failure Is Painful, Try Never Trying At All</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Hannah Ziegler</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="If You Believe Failure Is Painful, Try Never Trying At All" tabindex="-1" aria-hidden="true">
+                  <img
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
+                    alt=""
+                    width="72"
+                    height="72"
+                  />
+                  <span class="post-thumb__badge">1</span>
+                </a>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Street Style Looks That Defined the Weekend Markets">Street Style Looks That Defined the Weekend Markets</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Martina Richter</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="Street Style Looks That Defined the Weekend Markets" tabindex="-1" aria-hidden="true">
+                  <img
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
+                    alt=""
+                    width="72"
+                    height="72"
+                  />
+                  <span class="post-thumb__badge">2</span>
+                </a>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="How Capsule Closets Help Busy Professionals Dress Faster">How Capsule Closets Help Busy Professionals Dress Faster</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Denis Schmidt</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="How Capsule Closets Help Busy Professionals Dress Faster" tabindex="-1" aria-hidden="true">
+                  <img
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
+                    alt=""
+                    width="72"
+                    height="72"
+                  />
+                  <span class="post-thumb__badge">3</span>
+                </a>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Accessories That Quietly Elevate Everyday Outfits">Accessories That Quietly Elevate Everyday Outfits</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Priya Nair</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="Accessories That Quietly Elevate Everyday Outfits" tabindex="-1" aria-hidden="true">
+                  <img
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
+                    alt=""
+                    width="72"
+                    height="72"
+                  />
+                  <span class="post-thumb__badge">4</span>
+                </a>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-news__panel" id="tech-panel-sports" role="tabpanel" data-tech-panel="sports" hidden aria-hidden="true">
+          <div class="row g-4">
+            <div class="col-sm-6 col-xl-3">
+              <article class="cover-card cover-card--tech">
+                <img
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
                   alt="Hands holding a game controller"
                   width="400"
                   height="520"
                 />
-                <span class="tech-card__overlay" aria-hidden="true"></span>
-                <span class="tech-card__body">
-                  <span class="tech-card__category tech-card__category--sports">
-                    <span class="tech-card__category-icon" aria-hidden="true"></span>
-                    Sports
-                  </span>
-                  <span class="tech-card__title">The Best Exciting Local Multiplayer Games You Can Play on PS5</span>
-                  <span class="tech-card__author">
-                    <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.75"/>
-                      <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                    </svg>
-                    By Martina Richter
-                  </span>
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Sports</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">The Best Exciting Local Multiplayer Games You Can Play on PS5</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Martina Richter</a>
                 </span>
-              </a>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="cover-card cover-card--tech">
+                <img
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1461896836934-ffe607ba6851?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  alt="Athletes racing on a track"
+                  width="400"
+                  height="520"
+                />
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Sports</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Unexpected Football Moments Keep Fans Watching Every Match</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Hannah Ziegler</a>
+                </span>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="cover-card cover-card--tech">
+                <img
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1517649763962-0c623066027e?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  alt="Cyclists in a race"
+                  width="400"
+                  height="520"
+                />
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Sports</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Smart Training Plans Helping Athletes Recover Faster</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Denis Schmidt</a>
+                </span>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="cover-card cover-card--tech">
+                <img
+                  class="cover-card__image"
+                  src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+                  alt="Soccer ball on a field"
+                  width="400"
+                  height="520"
+                />
+                <span class="cover-card__overlay" aria-hidden="true"></span>
+                <span class="cover-card__body">
+                  <span class="cover-card__category">Sports</span>
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Youth Leagues Open New Paths for Community Coaching</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Alex Morgan</a>
+                </span>
+              </article>
             </div>
           </div>
 
-          <div class="row g-4 mt-1">
+          <div class="row tech-news__ranks">
             <div class="col-sm-6 col-xl-3">
-              <a class="tech-rank" href="#">
-                <span class="tech-rank__content">
-                  <span class="tech-rank__title">Get One of the Best VR Games Free on Epic Games Store</span>
-                  <time class="tech-rank__date" datetime="2025-04-16">April 16, 2025</time>
-                </span>
-                <span class="tech-rank__media">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Virtual Reality and the Gaming Industry's Shift to the Future">Virtual Reality and the Gaming Industry's Shift to the Future</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Hannah Ziegler</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="Virtual Reality and the Gaming Industry's Shift to the Future" tabindex="-1" aria-hidden="true">
                   <img
-                    class="tech-rank__image"
-                    src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=200&q=80"
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1461896836934-ffe607ba6851?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
                     alt=""
                     width="72"
                     height="72"
                   />
-                  <span class="tech-rank__badge">1</span>
-                </span>
-              </a>
+                  <span class="post-thumb__badge">1</span>
+                </a>
+              </article>
             </div>
-
             <div class="col-sm-6 col-xl-3">
-              <a class="tech-rank" href="#">
-                <span class="tech-rank__content">
-                  <span class="tech-rank__title">Digital Calendars &amp; Organizers to Get You Organized</span>
-                  <time class="tech-rank__date" datetime="2025-04-15">April 15, 2025</time>
-                </span>
-                <span class="tech-rank__media">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Weekend Match Previews Fans Should Not Miss">Weekend Match Previews Fans Should Not Miss</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Martina Richter</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="Weekend Match Previews Fans Should Not Miss" tabindex="-1" aria-hidden="true">
                   <img
-                    class="tech-rank__image"
-                    src="https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=200&q=80"
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1517649763962-0c623066027e?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
                     alt=""
                     width="72"
                     height="72"
                   />
-                  <span class="tech-rank__badge">2</span>
-                </span>
-              </a>
+                  <span class="post-thumb__badge">2</span>
+                </a>
+              </article>
             </div>
-
             <div class="col-sm-6 col-xl-3">
-              <a class="tech-rank" href="#">
-                <span class="tech-rank__content">
-                  <span class="tech-rank__title">Tech Leaders Highlight 15 Industries AI and VR Will Disrupt</span>
-                  <time class="tech-rank__date" datetime="2025-04-07">April 7, 2025</time>
-                </span>
-                <span class="tech-rank__media">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="How Nutrition Timing Improves Match-Day Performance">How Nutrition Timing Improves Match-Day Performance</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Priya Nair</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="How Nutrition Timing Improves Match-Day Performance" tabindex="-1" aria-hidden="true">
                   <img
-                    class="tech-rank__image"
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=200&q=80"
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
                     alt=""
                     width="72"
                     height="72"
                   />
-                  <span class="tech-rank__badge">3</span>
-                </span>
-              </a>
+                  <span class="post-thumb__badge">3</span>
+                </a>
+              </article>
             </div>
-
             <div class="col-sm-6 col-xl-3">
-              <a class="tech-rank" href="#">
-                <span class="tech-rank__content">
-                  <span class="tech-rank__title">Guide to Nutritious Breakfast Options for Increased Energy</span>
-                  <time class="tech-rank__date" datetime="2025-03-22">March 22, 2025</time>
-                </span>
-                <span class="tech-rank__media">
+              <article class="post-thumb post-thumb--rank d-flex align-items-start gap-3 h-100 pt-1 w-100">
+                <div class="post-thumb__body flex-grow-1 min-w-0">
+                  <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#" title="Rising Stars Making Their Mark Across Local Clubs">Rising Stars Making Their Mark Across Local Clubs</a>
+                  <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                  <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                  </svg>
+                  By Denis Schmidt</a>
+                </div>
+                <a class="post-thumb__media post-thumb__media--round flex-shrink-0 position-relative" href="#" title="Rising Stars Making Their Mark Across Local Clubs" tabindex="-1" aria-hidden="true">
                   <img
-                    class="tech-rank__image"
-                    src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=200&q=80"
+                    class="post-thumb__image d-block w-100 h-100 object-fit-cover rounded-circle"
+                    src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&amp;fit=crop&amp;w=200&amp;q=80"
                     alt=""
                     width="72"
                     height="72"
                   />
-                  <span class="tech-rank__badge">4</span>
-                </span>
-              </a>
+                  <span class="post-thumb__badge">4</span>
+                </a>
+              </article>
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </section>
 
-      <section class="spotlights" aria-label="Spotlights and health news">
+      <section class="spotlights section-gap" aria-labelledby="spotlights-title">
         <div class="container">
-          <ul class="spotlights__tabs" role="tablist">
-            <li role="presentation">
-              <button
-                class="spotlights__tab spotlights__tab--active"
-                id="spotlights-tab"
-                type="button"
-                role="tab"
-                aria-selected="true"
-                aria-controls="spotlights-panel"
-                data-spotlight-tab="spotlights"
-              >
-                Spotlights Posts
-              </button>
-            </li>
-            <li role="presentation">
-              <button
-                class="spotlights__tab"
-                id="health-tab"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                aria-controls="health-panel"
-                data-spotlight-tab="health"
-              >
-                Health News
-              </button>
-            </li>
-          </ul>
-
-          <div
-            class="spotlights__panel is-active"
-            id="spotlights-panel"
-            role="tabpanel"
-            aria-labelledby="spotlights-tab"
-            data-spotlight-panel="spotlights"
-          >
-            <ol class="spotlights__grid">
-              <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">1</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">New VR Technology Trends Reveal the Future of Immersive Digital Experiences</span>
-                    <span class="spotlights__meta">
-                      Denis Schmidt<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-08-26">August 26, 2026</time>
-                    </span>
-                  </span>
-                </a>
-              </li>
-              <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">2</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Global Tourism Growth Opens New Opportunities for Destinations</span>
-                    <span class="spotlights__meta">
-                      Martina Richter<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-08-26">August 26, 2026</time>
-                    </span>
-                  </span>
-                </a>
-              </li>
-              <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">3</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Smart Transportation Solutions Offer New Hope for Reducing City Traffic</span>
-                    <span class="spotlights__meta">
-                      Martina Richter<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-08-24">August 24, 2026</time>
-                    </span>
-                  </span>
-                </a>
-              </li>
-              <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">4</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Next-Generation Laptops Bring Faster Performance and Smarter Features to Users</span>
-                    <span class="spotlights__meta">
-                      Hannah Ziegler<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-08-11">August 11, 2026</time>
-                    </span>
-                  </span>
-                </a>
-              </li>
-              <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">5</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Changing Habitats Create New Challenges for Pandas Across the Wild</span>
-                    <span class="spotlights__meta">
-                      Denis Schmidt<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-08-10">August 10, 2026</time>
-                    </span>
-                  </span>
-                </a>
-              </li>
-              <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">6</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Unexpected Football Moments Keep Fans Watching Every Match</span>
-                    <span class="spotlights__meta">
-                      Hannah Ziegler<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-03-14">March 14, 2026</time>
-                    </span>
-                  </span>
-                </a>
-              </li>
-            </ol>
+          <div class="tech-news__head tech-news__head--on-dark">
+            <h2 class="tech-news__badge" id="spotlights-title">
+              <span class="tech-news__badge-dot" aria-hidden="true"></span>
+              Spotlights Posts
+            </h2>
           </div>
 
-          <div
-            class="spotlights__panel"
-            id="health-panel"
-            role="tabpanel"
-            aria-labelledby="health-tab"
-            hidden
-            data-spotlight-panel="health"
-          >
+          <div class="spotlights__panel">
             <ol class="spotlights__grid">
               <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">1</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Daily Walking Habits Linked to Better Long-Term Heart Health</span>
-                    <span class="spotlights__meta">
-                      Priya Nair<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-08-20">August 20, 2026</time>
-                    </span>
-                  </span>
-                </a>
+                <div class="spotlights__link">
+                  <span class="spotlights__number" aria-hidden="true">1</span>
+                  <div class="spotlights__body">
+                    <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">New VR Technology Trends Reveal the Future of Immersive Digital Experiences</a>
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                      <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                      </svg>
+                      By Denis Schmidt
+                    </a>
+                  </div>
+                </div>
               </li>
               <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">2</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Nutrition Experts Share Simple Meals That Support Steady Energy</span>
-                    <span class="spotlights__meta">
-                      Alex Morgan<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-08-18">August 18, 2026</time>
-                    </span>
-                  </span>
-                </a>
+                <div class="spotlights__link">
+                  <span class="spotlights__number" aria-hidden="true">2</span>
+                  <div class="spotlights__body">
+                    <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Global Tourism Growth Opens New Opportunities for Destinations</a>
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                      <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                      </svg>
+                      By Martina Richter
+                    </a>
+                  </div>
+                </div>
               </li>
               <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">3</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Sleep Tracking Wearables Help Users Build Healthier Night Routines</span>
-                    <span class="spotlights__meta">
-                      Martina Richter<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-08-12">August 12, 2026</time>
-                    </span>
-                  </span>
-                </a>
+                <div class="spotlights__link">
+                  <span class="spotlights__number" aria-hidden="true">3</span>
+                  <div class="spotlights__body">
+                    <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Smart Transportation Solutions Offer New Hope for Reducing City Traffic</a>
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                      <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                      </svg>
+                      By Martina Richter
+                    </a>
+                  </div>
+                </div>
               </li>
               <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">4</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Mental Wellness Programs Expand Across Remote Workplaces</span>
-                    <span class="spotlights__meta">
-                      Hannah Ziegler<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-08-05">August 5, 2026</time>
-                    </span>
-                  </span>
-                </a>
+                <div class="spotlights__link">
+                  <span class="spotlights__number" aria-hidden="true">4</span>
+                  <div class="spotlights__body">
+                    <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Next-Generation Laptops Bring Faster Performance and Smarter Features to Users</a>
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                      <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                      </svg>
+                      By Hannah Ziegler
+                    </a>
+                  </div>
+                </div>
               </li>
               <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">5</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Hydration Myths Debunked by Sports Medicine Specialists</span>
-                    <span class="spotlights__meta">
-                      Denis Schmidt<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-07-28">July 28, 2026</time>
-                    </span>
-                  </span>
-                </a>
+                <div class="spotlights__link">
+                  <span class="spotlights__number" aria-hidden="true">5</span>
+                  <div class="spotlights__body">
+                    <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Changing Habitats Create New Challenges for Pandas Across the Wild</a>
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                      <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                      </svg>
+                      By Denis Schmidt
+                    </a>
+                  </div>
+                </div>
               </li>
               <li class="spotlights__item">
-                <a class="spotlights__link" href="#">
-                  <span class="spotlights__number">6</span>
-                  <span class="spotlights__body">
-                    <span class="spotlights__title">Community Clinics Offer Free Screenings During Awareness Week</span>
-                    <span class="spotlights__meta">
-                      Priya Nair<span class="spotlights__meta-sep" aria-hidden="true">|</span>
-                      <time datetime="2026-07-15">July 15, 2026</time>
-                    </span>
-                  </span>
-                </a>
+                <div class="spotlights__link">
+                  <span class="spotlights__number" aria-hidden="true">6</span>
+                  <div class="spotlights__body">
+                    <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Unexpected Football Moments Keep Fans Watching Every Match</a>
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                      <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                      </svg>
+                      By Hannah Ziegler
+                    </a>
+                  </div>
+                </div>
               </li>
             </ol>
           </div>
         </div>
       </section>
 
-      <section class="latest-block" aria-label="Latest news">
+      <section class="latest-block section-gap" aria-labelledby="latest-block-title">
         <div class="container">
-          <div class="latest-block__toolbar">
-            <span class="latest-block__badge">
-              <span class="latest-block__badge-dot" aria-hidden="true"></span>
-              Latest News
-            </span>
-            <hr class="latest-block__line" />
-            <ul class="latest-block__filters" role="list">
-              <li>
-                <button class="latest-block__filter latest-block__filter--active" type="button" data-latest-filter>Science</button>
-              </li>
-              <li>
-                <button class="latest-block__filter" type="button" data-latest-filter>Fashion</button>
-              </li>
-              <li>
-                <button class="latest-block__filter" type="button" data-latest-filter>Sports</button>
-              </li>
-            </ul>
-          </div>
-
           <div class="row g-4">
             <div class="col-lg-8">
+              <div class="tech-news__head">
+                <h2 class="tech-news__badge" id="latest-block-title">
+                  <span class="tech-news__badge-dot" aria-hidden="true"></span>
+                  Latest News
+                </h2>
+                <ul class="tech-news__filters" role="tablist" aria-label="Latest block categories">
+                  <li role="presentation">
+                    <button class="tech-news__filter tech-news__filter--active" type="button" role="tab" aria-selected="true" data-latest-filter="science" aria-controls="latest-panel-science">Science</button>
+                  </li>
+                  <li role="presentation">
+                    <button class="tech-news__filter" type="button" role="tab" aria-selected="false" data-latest-filter="fashion" aria-controls="latest-panel-fashion">Fashion</button>
+                  </li>
+                  <li role="presentation">
+                    <button class="tech-news__filter" type="button" role="tab" aria-selected="false" data-latest-filter="sports" aria-controls="latest-panel-sports">Sports</button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="tech-news__panels">
+            <div class="tech-news__panel" id="latest-panel-science" role="tabpanel" data-latest-panel="science">
               <div class="row g-4">
                 <div class="col-md-6">
-                  <article class="post-feature">
-                    <a class="post-feature__media" href="#">
-                      <img
-                        class="post-feature__image"
-                        src="https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=900&q=80"
+                  <article class="post-card post-card--feature">
+                    <div class="post-card__media">
+                      <a class="post-card__media-link" href="#">
+                        <img class="post-card__image"
+                        src="https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
                         alt="Young person wearing headphones"
                         width="600"
                         height="380"
                       />
-                    </a>
-                    <div class="post-feature__category">
-                      <span class="post-feature__category-icon" aria-hidden="true"></span>
-                      News
-                    </div>
-                    <h3 class="post-feature__title">
-                      <span class="post-feature__exclusive">Exclusive</span>
-                      <a class="post-feature__title-link" href="#">
-                        Report: Screen Time Surge, Teens Facing Mental Health Concerns
                       </a>
-                    </h3>
-                    <p class="post-feature__meta">
-                      By Martina Richter
-                      <span aria-hidden="true"> | </span>
-                      <time datetime="2024-03-15">2 Years Ago</time>
-                    </p>
-                    <p class="post-feature__excerpt">
-                      While mobile phones undoubtedly provide countless benefits, recent studies
-                      highlight rising risks for teens who spend too much time online.
-                    </p>
-                    <a class="btn post-feature__more" href="#">
-                      Read More
-                      <span class="post-feature__more-icon" aria-hidden="true">
-                        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none">
-                          <path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                      </span>
-                    </a>
+                    </div>
+                    <a class="cover-card__category" href="#">Science</a>
+                    <div class="post-card__body">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Report: Screen Time Surge, Teens Facing Mental Health Concerns</a>
+                      <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/></svg> By Martina Richter</a>
+                      <p class="post-card__excerpt">While mobile phones undoubtedly provide countless benefits, recent studies highlight rising risks for teens who spend too much time online.</p>
+                    </div>
                   </article>
                 </div>
 
                 <div class="col-md-6">
                   <div class="row g-4">
-                    <div class="col-sm-6">
-                      <a class="post-tile" href="#">
-                        <span class="post-tile__media">
-                          <img
-                            class="post-tile__image"
-                            src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=500&q=80"
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
                             alt=""
                             width="280"
                             height="190"
                           />
-                        </span>
-                        <span class="post-tile__category post-tile__category--news">
-                          <span class="post-tile__category-icon" aria-hidden="true"></span>
-                          News
-                        </span>
-                        <span class="post-tile__title">Mental Health Service Agreements Extended Due to Ongoing Pandemic</span>
-                      </a>
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Science</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Mental Health Service Agreements Extended Due to Ongoing Pandemic</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Martina Richter</a>
+                        </div>
+                      </article>
                     </div>
-                    <div class="col-sm-6">
-                      <a class="post-tile" href="#">
-                        <span class="post-tile__media">
-                          <img
-                            class="post-tile__image"
-                            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=500&q=80"
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
                             alt=""
                             width="280"
                             height="190"
                           />
-                        </span>
-                        <span class="post-tile__category post-tile__category--entertainment">
-                          <span class="post-tile__category-icon" aria-hidden="true"></span>
-                          Entertainment
-                        </span>
-                        <span class="post-tile__title">People like fast food because it's quick to prepare and easily accessible.</span>
-                      </a>
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Science</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Researchers Map New Pathways for Clean Energy Storage</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Denis Schmidt</a>
+                        </div>
+                      </article>
                     </div>
-                    <div class="col-sm-6">
-                      <a class="post-tile" href="#">
-                        <span class="post-tile__media">
-                          <img
-                            class="post-tile__image"
-                            src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=80"
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
                             alt=""
                             width="280"
                             height="190"
                           />
-                        </span>
-                        <span class="post-tile__category post-tile__category--fashion">
-                          <span class="post-tile__category-icon" aria-hidden="true"></span>
-                          Fashion
-                        </span>
-                        <span class="post-tile__title">If You Believe Failure Is Painful, Try Never Trying At All</span>
-                      </a>
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Science</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">AI Models Help Doctors Spot Early Warning Signs Faster</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Priya Nair</a>
+                        </div>
+                      </article>
                     </div>
-                    <div class="col-sm-6">
-                      <a class="post-tile" href="#">
-                        <span class="post-tile__media">
-                          <img
-                            class="post-tile__image"
-                            src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=500&q=80"
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
                             alt=""
                             width="280"
                             height="190"
                           />
-                        </span>
-                        <span class="post-tile__category post-tile__category--food">
-                          <span class="post-tile__category-icon" aria-hidden="true"></span>
-                          Food
-                        </span>
-                        <span class="post-tile__title">Are You Missing These Hidden Opportunities to Save Money?</span>
-                      </a>
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Science</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Lab Breakthroughs Promise Stronger Everyday Materials</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Alex Morgan</a>
+                        </div>
+                      </article>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
+            <div class="tech-news__panel" id="latest-panel-fashion" role="tabpanel" data-latest-panel="fashion" hidden aria-hidden="true">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <article class="post-card post-card--feature">
+                    <div class="post-card__media">
+                      <a class="post-card__media-link" href="#">
+                        <img class="post-card__image"
+                        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                        alt="Fashion model outdoors"
+                        width="600"
+                        height="380"
+                      />
+                      </a>
+                    </div>
+                    <a class="cover-card__category" href="#">Fashion</a>
+                    <div class="post-card__body">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">If You Believe Failure Is Painful, Try Never Trying At All</a>
+                      <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/></svg> By Hannah Ziegler</a>
+                      <p class="post-card__excerpt">Designers are rewriting seasonal rules with durable fabrics, quieter logos, and silhouettes built for real city life.</p>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="row g-4">
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
+                            alt=""
+                            width="280"
+                            height="190"
+                          />
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Fashion</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Accessories That Quietly Elevate Everyday Outfits</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Martina Richter</a>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
+                            alt=""
+                            width="280"
+                            height="190"
+                          />
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Fashion</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Runway Recap: Bold Colors Dominate Spring Collections</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Alex Morgan</a>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
+                            alt=""
+                            width="280"
+                            height="190"
+                          />
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Fashion</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Sustainable Fabrics Are Changing How Designers Create</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Priya Nair</a>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
+                            alt=""
+                            width="280"
+                            height="190"
+                          />
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Fashion</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Street Style Looks That Defined the Weekend Markets</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Denis Schmidt</a>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tech-news__panel" id="latest-panel-sports" role="tabpanel" data-latest-panel="sports" hidden aria-hidden="true">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <article class="post-card post-card--feature">
+                    <div class="post-card__media">
+                      <a class="post-card__media-link" href="#">
+                        <img class="post-card__image"
+                        src="https://images.unsplash.com/photo-1461896836934-ffe607ba6851?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                        alt="Athletes racing"
+                        width="600"
+                        height="380"
+                      />
+                      </a>
+                    </div>
+                    <a class="cover-card__category" href="#">Sports</a>
+                    <div class="post-card__body">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Unexpected Football Moments Keep Fans Watching Every Match</a>
+                      <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/></svg> By Hannah Ziegler</a>
+                      <p class="post-card__excerpt">From last-minute goals to tactical switches, this season is delivering drama that keeps stadiums and living rooms locked in.</p>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="row g-4">
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
+                            alt=""
+                            width="280"
+                            height="190"
+                          />
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Sports</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">The Best Exciting Local Multiplayer Games You Can Play on PS5</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Martina Richter</a>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1517649763962-0c623066027e?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
+                            alt=""
+                            width="280"
+                            height="190"
+                          />
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Sports</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Smart Training Plans Helping Athletes Recover Faster</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Denis Schmidt</a>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
+                            alt=""
+                            width="280"
+                            height="190"
+                          />
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Sports</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Youth Leagues Open New Paths for Community Coaching</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Alex Morgan</a>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="col-6">
+                      <article class="post-card post-card--tile">
+                        <div class="post-card__media">
+                          <a class="post-card__media-link" href="#">
+                            <img class="post-card__image"
+                            src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&amp;fit=crop&amp;w=500&amp;q=80"
+                            alt=""
+                            width="280"
+                            height="190"
+                          />
+                          </a>
+                        </div>
+                        <a class="cover-card__category" href="#">Sports</a>
+                        <div class="post-card__body">
+                          <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Rising Stars Making Their Mark Across Local Clubs</a>
+                          <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By Priya Nair</a>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+            </div>
+
             <div class="col-lg-4">
               <aside class="dont-miss" aria-labelledby="dont-miss-title">
-                <h2 class="dont-miss__title" id="dont-miss-title">
-                  <span class="dont-miss__accent">Don't Miss</span> Finance News
-                </h2>
+                <div class="tech-news__head">
+                  <h2 class="tech-news__badge" id="dont-miss-title">
+                    <span class="tech-news__badge-dot" aria-hidden="true"></span>
+                    Don't Miss
+                  </h2>
+                </div>
                 <ol class="dont-miss__list">
                   <li class="dont-miss__item">
-                    <a class="dont-miss__link" href="#">
-                      <span class="dont-miss__media">
-                        <img
-                          class="dont-miss__image"
-                          src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=160&q=80"
+                    <article class="post-card post-card--listed">
+                      <div class="post-card__media">
+                        <a class="post-card__media-link" href="#">
+                          <img class="post-card__image"
+                          src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=240&q=80"
                           alt=""
-                          width="68"
-                          height="68"
+                          width="116"
+                          height="116"
                         />
-                        <span class="dont-miss__number" aria-hidden="true">1</span>
-                      </span>
-                      <span class="dont-miss__body">
-                        <span class="dont-miss__category">News</span>
-                        <span class="dont-miss__headline">Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!</span>
-                        <time class="dont-miss__date" datetime="2025-06-30">June 30, 2025</time>
-                      </span>
-                    </a>
+                        </a>
+                        <span class="post-card__number" aria-hidden="true">1</span>
+                      </div>
+                      <div class="post-card__body">
+                        <a class="cover-card__category" href="#">News</a>
+                        <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Grab the iPhone 11 Pro Max Now at a Big Discount Before It's Gone!</a>
+                        <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/></svg> By Martina Richter</a>
+                      </div>
+                    </article>
                   </li>
                   <li class="dont-miss__item">
-                    <a class="dont-miss__link" href="#">
-                      <span class="dont-miss__media">
-                        <img
-                          class="dont-miss__image"
-                          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=160&q=80"
+                    <article class="post-card post-card--listed">
+                      <div class="post-card__media">
+                        <a class="post-card__media-link" href="#">
+                          <img class="post-card__image"
+                          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=240&q=80"
                           alt=""
-                          width="68"
-                          height="68"
+                          width="116"
+                          height="116"
                         />
-                        <span class="dont-miss__number" aria-hidden="true">2</span>
-                      </span>
-                      <span class="dont-miss__body">
-                        <span class="dont-miss__category">Food</span>
-                        <span class="dont-miss__headline">Hyundai Surges Amid Speculation of Apple Electric Car Collaboration</span>
-                        <time class="dont-miss__date" datetime="2025-06-29">June 29, 2025</time>
-                      </span>
-                    </a>
+                        </a>
+                        <span class="post-card__number" aria-hidden="true">2</span>
+                      </div>
+                      <div class="post-card__body">
+                        <a class="cover-card__category" href="#">Food</a>
+                        <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Hyundai Surges Amid Speculation of Apple Electric Car Collaboration</a>
+                        <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/></svg> By Alex Morgan</a>
+                      </div>
+                    </article>
                   </li>
                   <li class="dont-miss__item">
-                    <a class="dont-miss__link" href="#">
-                      <span class="dont-miss__media">
-                        <img
-                          class="dont-miss__image"
-                          src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=160&q=80"
+                    <article class="post-card post-card--listed">
+                      <div class="post-card__media">
+                        <a class="post-card__media-link" href="#">
+                          <img class="post-card__image"
+                          src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=240&q=80"
                           alt=""
-                          width="68"
-                          height="68"
+                          width="116"
+                          height="116"
                         />
-                        <span class="dont-miss__number" aria-hidden="true">3</span>
-                      </span>
-                      <span class="dont-miss__body">
-                        <span class="dont-miss__category">Sports</span>
-                        <span class="dont-miss__headline">Virtual Reality and the Gaming Industry's Shift to the Future</span>
-                        <time class="dont-miss__date" datetime="2025-06-29">June 29, 2025</time>
-                      </span>
-                    </a>
+                        </a>
+                        <span class="post-card__number" aria-hidden="true">3</span>
+                      </div>
+                      <div class="post-card__body">
+                        <a class="cover-card__category" href="#">Sports</a>
+                        <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Virtual Reality and the Gaming Industry's Shift to the Future</a>
+                        <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/></svg> By Hannah Ziegler</a>
+                      </div>
+                    </article>
                   </li>
                   <li class="dont-miss__item">
-                    <a class="dont-miss__link" href="#">
-                      <span class="dont-miss__media">
-                        <img
-                          class="dont-miss__image"
-                          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=160&q=80"
+                    <article class="post-card post-card--listed">
+                      <div class="post-card__media">
+                        <a class="post-card__media-link" href="#">
+                          <img class="post-card__image"
+                          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=240&q=80"
                           alt=""
-                          width="68"
-                          height="68"
+                          width="116"
+                          height="116"
                         />
-                        <span class="dont-miss__number" aria-hidden="true">4</span>
-                      </span>
-                      <span class="dont-miss__body">
-                        <span class="dont-miss__category">Food</span>
-                        <span class="dont-miss__headline">Media and Politics: A Defining Relationship in the Modern Era</span>
-                        <time class="dont-miss__date" datetime="2025-06-27">June 27, 2025</time>
-                      </span>
-                    </a>
-                  </li>
-                  <li class="dont-miss__item">
-                    <a class="dont-miss__link" href="#">
-                      <span class="dont-miss__media">
-                        <img
-                          class="dont-miss__image"
-                          src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=160&q=80"
-                          alt=""
-                          width="68"
-                          height="68"
-                        />
-                        <span class="dont-miss__number" aria-hidden="true">5</span>
-                      </span>
-                      <span class="dont-miss__body">
-                        <span class="dont-miss__category">Fashion</span>
-                        <span class="dont-miss__headline">Distinguished Brands Setting Extraordinary Styles</span>
-                        <time class="dont-miss__date" datetime="2025-06-25">June 25, 2025</time>
-                      </span>
-                    </a>
+                        </a>
+                        <span class="post-card__number" aria-hidden="true">4</span>
+                      </div>
+                      <div class="post-card__body">
+                        <a class="cover-card__category" href="#">Food</a>
+                        <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Media and Politics: A Defining Relationship in the Modern Era</a>
+                        <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/></svg> By Priya Nair</a>
+                      </div>
+                    </article>
                   </li>
                 </ol>
               </aside>
@@ -1153,12 +1699,14 @@
         </div>
       </section>
 
-      <section class="topics" aria-labelledby="topics-title">
+      <section class="topics section-gap" aria-labelledby="topics-title">
         <div class="container">
-          <h2 class="topics__title" id="topics-title">
-            <span class="topics__mark" aria-hidden="true">//</span>
-            Other interesting topics:
-          </h2>
+          <div class="tech-news__head">
+            <h2 class="tech-news__badge" id="topics-title">
+              <span class="tech-news__badge-dot" aria-hidden="true"></span>
+              Other Topics
+            </h2>
+          </div>
 
           <ul class="topics__list">
             <li>
@@ -1227,202 +1775,125 @@
         </div>
       </section>
 
-      <section class="more-news" aria-label="More news">
+      <section class="more-news section-gap" aria-label="More news">
         <div class="container">
           <div class="row g-4 g-xl-5">
             <div class="col-lg-8">
-              <div class="more-news__toolbar">
-                <a class="more-news__cta" href="#">View More News</a>
-                <hr class="more-news__line" />
-                <div class="more-news__dots" role="tablist" aria-label="News pages">
-                  <button class="more-news__dot more-news__dot--active" type="button" aria-label="Page 1" aria-current="true" data-more-dot></button>
-                  <button class="more-news__dot" type="button" aria-label="Page 2" data-more-dot></button>
-                  <button class="more-news__dot" type="button" aria-label="Page 3" data-more-dot></button>
-                  <button class="more-news__dot" type="button" aria-label="Page 4" data-more-dot></button>
-                </div>
+              <div class="tech-news__head more-news__toolbar">
+                <a class="tech-news__badge more-news__cta" href="#">View More News</a>
               </div>
 
               <div class="more-news__list">
-                <article class="news-row">
-                  <a class="news-row__media" href="#">
-                    <img
-                      class="news-row__image"
+                <article class="post-card post-card--row">
+                  <div class="post-card__media">
+                    <a class="post-card__media-link" href="#">
+                      <img class="post-card__image"
                       src="https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=400&q=80"
                       alt=""
                       width="176"
                       height="132"
                     />
-                    <span class="news-row__tag">Video</span>
-                  </a>
-                  <div class="news-row__body">
-                    <h3 class="news-row__title">
-                      <a class="news-row__title-link" href="#">Report: Screen Time Surge, Teens Facing Mental Health Concerns</a>
+                    </a>
+                    <a class="cover-card__category post-card__tag" href="#">Video</a>
+                  </div>
+                  <div class="post-card__body">
+                    <h3 class="post-card__heading">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Report: Screen Time Surge, Teens Facing Mental Health Concerns</a>
                     </h3>
-                    <p class="news-row__meta">
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        John Wick
-                      </span>
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M12 7.5V12l3 1.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        <time datetime="2022-01-25">25 Jan, 2022</time>
-                      </span>
-                    </p>
-                    <p class="news-row__excerpt">
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By John Wick</a>
+                    <p class="post-card__excerpt">
                       While mobile phones provide countless benefits, recent findings show rising risks for teens who spend too much unstructured time online.
                     </p>
                   </div>
                 </article>
 
-                <article class="news-row">
-                  <a class="news-row__media" href="#">
-                    <img
-                      class="news-row__image"
+                <article class="post-card post-card--row">
+                  <div class="post-card__media">
+                    <a class="post-card__media-link" href="#">
+                      <img class="post-card__image"
                       src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80"
                       alt=""
                       width="176"
                       height="132"
                     />
-                    <span class="news-row__tag">Health</span>
-                  </a>
-                  <div class="news-row__body">
-                    <h3 class="news-row__title">
-                      <a class="news-row__title-link" href="#">Mental Health Service Agreements Extended Due to Ongoing Pandemic</a>
+                    </a>
+                    <a class="cover-card__category post-card__tag" href="#">Health</a>
+                  </div>
+                  <div class="post-card__body">
+                    <h3 class="post-card__heading">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Mental Health Service Agreements Extended Due to Ongoing Pandemic</a>
                     </h3>
-                    <p class="news-row__meta">
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        John Wick
-                      </span>
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M12 7.5V12l3 1.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        <time datetime="2022-01-25">25 Jan, 2022</time>
-                      </span>
-                    </p>
-                    <p class="news-row__excerpt">
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By John Wick</a>
+                    <p class="post-card__excerpt">
                       Clinics and insurers are renewing remote counseling programs so patients can keep access to care without long waitlists.
                     </p>
                   </div>
                 </article>
 
-                <article class="news-row">
-                  <a class="news-row__media" href="#">
-                    <img
-                      class="news-row__image"
+                <article class="post-card post-card--row">
+                  <div class="post-card__media">
+                    <a class="post-card__media-link" href="#">
+                      <img class="post-card__image"
                       src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=400&q=80"
                       alt=""
                       width="176"
                       height="132"
                     />
-                    <span class="news-row__tag">Traveling</span>
-                  </a>
-                  <div class="news-row__body">
-                    <h3 class="news-row__title">
-                      <a class="news-row__title-link" href="#">Global Tourism Growth Opens New Opportunities for Destinations</a>
+                    </a>
+                    <a class="cover-card__category post-card__tag" href="#">Traveling</a>
+                  </div>
+                  <div class="post-card__body">
+                    <h3 class="post-card__heading">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Global Tourism Growth Opens New Opportunities for Destinations</a>
                     </h3>
-                    <p class="news-row__meta">
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        John Wick
-                      </span>
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M12 7.5V12l3 1.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        <time datetime="2022-01-25">25 Jan, 2022</time>
-                      </span>
-                    </p>
-                    <p class="news-row__excerpt">
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By John Wick</a>
+                    <p class="post-card__excerpt">
                       Cities are redesigning visitor experiences around local culture, slow travel, and sustainable hospitality standards.
                     </p>
                   </div>
                 </article>
 
-                <article class="news-row">
-                  <a class="news-row__media" href="#">
-                    <img
-                      class="news-row__image"
+                <article class="post-card post-card--row">
+                  <div class="post-card__media">
+                    <a class="post-card__media-link" href="#">
+                      <img class="post-card__image"
                       src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80"
                       alt=""
                       width="176"
                       height="132"
                     />
-                    <span class="news-row__tag">Video</span>
-                  </a>
-                  <div class="news-row__body">
-                    <h3 class="news-row__title">
-                      <a class="news-row__title-link" href="#">Samsung Launches New 108MP Camera Sensor for Smartphones</a>
+                    </a>
+                    <a class="cover-card__category post-card__tag" href="#">Video</a>
+                  </div>
+                  <div class="post-card__body">
+                    <h3 class="post-card__heading">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Samsung Launches New 108MP Camera Sensor for Smartphones</a>
                     </h3>
-                    <p class="news-row__meta">
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        John Wick
-                      </span>
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M12 7.5V12l3 1.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        <time datetime="2022-01-25">25 Jan, 2022</time>
-                      </span>
-                    </p>
-                    <p class="news-row__excerpt">
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By John Wick</a>
+                    <p class="post-card__excerpt">
                       The new sensor promises cleaner low-light shots and faster autofocus for flagship phones arriving later this year.
                     </p>
                   </div>
                 </article>
 
-                <article class="news-row">
-                  <a class="news-row__media" href="#">
-                    <img
-                      class="news-row__image"
+                <article class="post-card post-card--row">
+                  <div class="post-card__media">
+                    <a class="post-card__media-link" href="#">
+                      <img class="post-card__image"
                       src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80"
                       alt=""
                       width="176"
                       height="132"
                     />
-                    <span class="news-row__tag">Health</span>
-                  </a>
-                  <div class="news-row__body">
-                    <h3 class="news-row__title">
-                      <a class="news-row__title-link" href="#">Guide to Nutritious Breakfast Options for Increased Energy</a>
+                    </a>
+                    <a class="cover-card__category post-card__tag" href="#">Health</a>
+                  </div>
+                  <div class="post-card__body">
+                    <h3 class="post-card__heading">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold mb-2" href="#">Guide to Nutritious Breakfast Options for Increased Energy</a>
                     </h3>
-                    <p class="news-row__meta">
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M5.5 19.5a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        John Wick
-                      </span>
-                      <span class="news-row__meta-item">
-                        <svg class="news-row__meta-icon icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.75"/>
-                          <path d="M12 7.5V12l3 1.75" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-                        </svg>
-                        <time datetime="2022-01-25">25 Jan, 2022</time>
-                      </span>
-                    </p>
-                    <p class="news-row__excerpt">
+                    <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/> </svg> By John Wick</a>
+                    <p class="post-card__excerpt">
                       Nutritionists share simple morning meals that balance protein, fiber, and healthy fats for steadier focus.
                     </p>
                   </div>
@@ -1432,85 +1903,96 @@
 
             <div class="col-lg-4">
               <aside class="top-authors" aria-labelledby="top-authors-title">
-                <h2 class="top-authors__title" id="top-authors-title">Top Authors</h2>
+                <div class="tech-news__head">
+                  <h2 class="tech-news__badge" id="top-authors-title">
+                    <span class="tech-news__badge-dot" aria-hidden="true"></span>
+                    Top Authors
+                  </h2>
+                </div>
                 <ul class="top-authors__list">
-                  <li>
+                  <li class="top-authors__item">
                     <a class="top-authors__link" href="#">
                       <img class="top-authors__avatar" src="https://i.pravatar.cc/96?img=5" alt="" width="48" height="48" />
-                      <span>
-                        <span class="top-authors__name">Marie Schmidt</span>
-                        <span class="top-authors__posts">13 Posts</span>
-                      </span>
+                      <span class="top-authors__name">Marie Schmidt</span>
                     </a>
+                    <span class="top-authors__posts">13 Posts</span>
                   </li>
-                  <li>
+                  <li class="top-authors__item">
                     <a class="top-authors__link" href="#">
                       <img class="top-authors__avatar" src="https://i.pravatar.cc/96?img=32" alt="" width="48" height="48" />
-                      <span>
-                        <span class="top-authors__name">Hannah Ziegler</span>
-                        <span class="top-authors__posts">11 Posts</span>
-                      </span>
+                      <span class="top-authors__name">Hannah Ziegler</span>
                     </a>
+                    <span class="top-authors__posts">11 Posts</span>
                   </li>
-                  <li>
+                  <li class="top-authors__item">
                     <a class="top-authors__link" href="#">
                       <img class="top-authors__avatar" src="https://i.pravatar.cc/96?img=12" alt="" width="48" height="48" />
-                      <span>
-                        <span class="top-authors__name">Denis Schmidt</span>
-                        <span class="top-authors__posts">9 Posts</span>
-                      </span>
+                      <span class="top-authors__name">Denis Schmidt</span>
                     </a>
+                    <span class="top-authors__posts">9 Posts</span>
                   </li>
                 </ul>
               </aside>
 
               <aside class="editors-pick" aria-labelledby="editors-pick-title">
-                <div class="editors-pick__head">
-                  <span class="editors-pick__icon" aria-hidden="true"></span>
-                  <h2 class="editors-pick__label" id="editors-pick-title">Editor's Pick</h2>
+                <div class="tech-news__head tech-news__head--on-dark">
+                  <h2 class="tech-news__badge" id="editors-pick-title">
+                    <span class="tech-news__badge-dot" aria-hidden="true"></span>
+                    Editor's Pick
+                  </h2>
                 </div>
 
-                <a class="editors-pick__feature" href="#">
-                  <span class="editors-pick__media">
-                    <img
-                      class="editors-pick__image"
+                <article class="post-card post-card--feature">
+                    <div class="post-card__media">
+                      <a class="post-card__media-link" href="#">
+                        <img class="post-card__image"
                       src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
                       alt="Smartwatch on a colored background"
                       width="420"
                       height="260"
                     />
-                  </span>
-                  <span class="editors-pick__title">Unlock Smartwatch Offers That Upgrade Your Daily Routine</span>
-                  <span class="editors-pick__meta">By Denis Schmidt • June 22, 2025</span>
-                  <span class="editors-pick__excerpt">
-                    From sleep tracking to faster workouts, these wearable deals are worth a second look this week.
-                  </span>
-                </a>
+                      </a>
+                    </div>
+                    <div class="post-card__body">
+                      <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Unlock Smartwatch Offers That Upgrade Your Daily Routine</a>
+                      <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#"><svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/></svg> By Denis Schmidt</a>
+                    </div>
+                  </article>
 
                 <ul class="editors-pick__list">
                   <li>
-                    <a class="editors-pick__item-link" href="#">
-                      <span class="editors-pick__date">
+                    <div class="editors-pick__item-link">
+                      <div class="editors-pick__date">
                         <span class="editors-pick__day">02</span>
                         <span class="editors-pick__month">Oct</span>
-                      </span>
-                      <span class="editors-pick__item-body">
-                        <span class="editors-pick__item-title">Ways to Play Music Using Your Amazon Echo Device</span>
-                        <span class="editors-pick__item-author">By Martina Richter</span>
-                      </span>
-                    </a>
+                      </div>
+                      <div class="editors-pick__item-body">
+                        <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">Ways to Play Music Using Your Amazon Echo Device</a>
+                        <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                          <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                          </svg>
+                          By Martina Richter
+                        </a>
+                      </div>
+                    </div>
                   </li>
                   <li>
-                    <a class="editors-pick__item-link" href="#">
-                      <span class="editors-pick__date">
+                    <div class="editors-pick__item-link">
+                      <div class="editors-pick__date">
                         <span class="editors-pick__day">18</span>
                         <span class="editors-pick__month">Sep</span>
-                      </span>
-                      <span class="editors-pick__item-body">
-                        <span class="editors-pick__item-title">The Best Exciting Local Multiplayer Games You Can Play</span>
-                        <span class="editors-pick__item-author">By Hannah Ziegler</span>
-                      </span>
-                    </a>
+                      </div>
+                      <div class="editors-pick__item-body">
+                        <a class="post-thumb__title text-truncate-2 text-decoration-none fw-bold" href="#">The Best Exciting Local Multiplayer Games You Can Play</a>
+                        <a class="post-thumb__date small mb-0 d-inline-flex align-items-center gap-1" href="#">
+                          <svg class="icon flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M7.25 7c0-2.619 2.131-4.75 4.75-4.75S16.75 4.381 16.75 7s-2.131 4.75-4.75 4.75S7.25 9.619 7.25 7M15 13.25H9c-3.17 0-5.75 2.58-5.75 5.75A2.75 2.75 0 0 0 6 21.75h12A2.75 2.75 0 0 0 20.75 19c0-3.17-2.58-5.75-5.75-5.75"/>
+                          </svg>
+                          By Hannah Ziegler
+                        </a>
+                      </div>
+                    </div>
                   </li>
                 </ul>
               </aside>
@@ -1519,7 +2001,7 @@
         </div>
       </section>
 
-      <section class="instagram" aria-labelledby="instagram-handle">
+      <section class="instagram section-gap" aria-labelledby="instagram-handle">
         <div class="container">
           <div class="instagram__intro">
             <h2 class="instagram__handle" id="instagram-handle">@RivaxStudio</h2>
@@ -1527,8 +2009,8 @@
           </div>
 
           <div class="instagram__gallery">
-            <ul class="instagram__list">
-              <li class="instagram__item">
+            <ul class="row g-2 g-lg-3 list-unstyled mb-0 instagram__list">
+              <li class="col-4 col-lg-2 instagram__item">
                 <a class="instagram__link" href="#" title="Instagram post 1">
                   <img
                     class="instagram__image"
@@ -1539,7 +2021,7 @@
                   />
                 </a>
               </li>
-              <li class="instagram__item">
+              <li class="col-4 col-lg-2 instagram__item">
                 <a class="instagram__link" href="#" title="Instagram post 2">
                   <img
                     class="instagram__image"
@@ -1550,7 +2032,7 @@
                   />
                 </a>
               </li>
-              <li class="instagram__item">
+              <li class="col-4 col-lg-2 instagram__item">
                 <a class="instagram__link" href="#" title="Instagram post 3">
                   <img
                     class="instagram__image"
@@ -1561,7 +2043,7 @@
                   />
                 </a>
               </li>
-              <li class="instagram__item">
+              <li class="col-4 col-lg-2 instagram__item">
                 <a class="instagram__link" href="#" title="Instagram post 4">
                   <img
                     class="instagram__image"
@@ -1572,7 +2054,7 @@
                   />
                 </a>
               </li>
-              <li class="instagram__item">
+              <li class="col-4 col-lg-2 instagram__item">
                 <a class="instagram__link" href="#" title="Instagram post 5">
                   <img
                     class="instagram__image"
@@ -1583,7 +2065,7 @@
                   />
                 </a>
               </li>
-              <li class="instagram__item">
+              <li class="col-4 col-lg-2 instagram__item">
                 <a class="instagram__link" href="#" title="Instagram post 6">
                   <img
                     class="instagram__image"
@@ -1612,8 +2094,8 @@
     <footer class="site-footer">
       <div class="container">
         <div class="site-footer__top">
-          <div class="site-footer__grid">
-            <div class="site-footer__col">
+          <div class="row g-4 g-lg-5 site-footer__grid">
+            <div class="col-6 col-lg site-footer__col">
               <h2 class="site-footer__title">Newsfy</h2>
               <ul class="site-footer__links">
                 <li><a class="site-footer__link" href="#">About Us</a></li>
@@ -1625,7 +2107,7 @@
               </ul>
             </div>
 
-            <div class="site-footer__col">
+            <div class="col-6 col-lg site-footer__col">
               <h2 class="site-footer__title">Categories</h2>
               <ul class="site-footer__links">
                 <li><a class="site-footer__link" href="#">Technology</a></li>
@@ -1638,7 +2120,7 @@
               </ul>
             </div>
 
-            <div class="site-footer__col">
+            <div class="col-6 col-lg site-footer__col">
               <h2 class="site-footer__title">Resources</h2>
               <ul class="site-footer__links">
                 <li><a class="site-footer__link" href="#">Latest News</a></li>
@@ -1651,7 +2133,7 @@
               </ul>
             </div>
 
-            <div class="site-footer__col">
+            <div class="col-6 col-lg site-footer__col">
               <h2 class="site-footer__title">Legal</h2>
               <ul class="site-footer__links">
                 <li><a class="site-footer__link" href="#">Privacy Policy</a></li>
@@ -1664,50 +2146,43 @@
               </ul>
             </div>
 
-            <div class="site-footer__col">
+            <div class="col-12 col-lg site-footer__col">
               <h2 class="site-footer__title">Follow us</h2>
               <ul class="site-footer__social">
                 <li>
                   <a class="site-footer__social-link" href="#" aria-label="Instagram" title="Instagram">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.75"/>
-                      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.75"/>
-                      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                    <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M4.66666 1.33334H11.3333C13.1743 1.33334 14.6667 2.82573 14.6667 4.66668V11.3333C14.6667 13.1743 13.1743 14.6667 11.3333 14.6667H4.66666C2.82571 14.6667 1.33333 13.1743 1.33333 11.3333V4.66668C1.33333 2.82573 2.82571 1.33334 4.66666 1.33334Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10.6667 7.57999C10.7489 8.13482 10.6542 8.70146 10.3958 9.19933C10.1375 9.6972 9.72876 10.1009 9.22775 10.3531C8.72674 10.6053 8.15897 10.6931 7.60519 10.6039C7.05142 10.5148 6.53984 10.2534 6.14323 9.85676C5.74661 9.46015 5.48516 8.94857 5.39605 8.3948C5.30694 7.84102 5.39471 7.27325 5.64688 6.77224C5.89906 6.27122 6.30279 5.86248 6.80066 5.60415C7.29852 5.34582 7.86517 5.25105 8.42 5.33332C8.98595 5.41724 9.5099 5.68096 9.91446 6.08553C10.319 6.49009 10.5827 7.01404 10.6667 7.57999Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M11.6667 4.33334H11.6733" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </a>
                 </li>
                 <li>
                   <a class="site-footer__social-link" href="#" aria-label="Facebook" title="Facebook">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/>
+                    <svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M14.6539 11.25L15.2094 7.63047H11.7363V5.28164C11.7363 4.29141 12.2215 3.32617 13.7769 3.32617H15.3559V0.244531C15.3559 0.244531 13.923 0 12.5531 0C9.69296 0 7.82343 1.73359 7.82343 4.87187V7.63047H4.64413V11.25H7.82343V20H11.7363V11.25H14.6539Z"/>
                     </svg>
                   </a>
                 </li>
                 <li>
-                  <a class="site-footer__social-link" href="#" aria-label="X" title="X">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M4 4h4.2l4.1 5.8L17.8 4H20l-6.1 7.2L20.5 20H16.3l-4.4-6.2L6.2 20H4l6.5-7.7L4 4Z"/>
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a class="site-footer__social-link" href="#" aria-label="YouTube" title="YouTube">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M22.5 7.2a3 3 0 0 0-2.1-2.1C18.5 4.6 12 4.6 12 4.6s-6.5 0-8.4.5A3 3 0 0 0 1.5 7.2 31 31 0 0 0 1 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.4.5 8.4.5s6.5 0 8.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23 12a31 31 0 0 0-.5-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/>
+                  <a class="site-footer__social-link" href="#" aria-label="Twitter" title="Twitter">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M12.1625 1.5H14.3688L9.55 7.00625L15.2188 14.5H10.7813L7.30313 9.95625L3.32813 14.5H1.11875L6.27188 8.60938L0.837502 1.5H5.3875L8.52813 5.65312L12.1625 1.5ZM11.3875 13.1812H12.6094L4.72188 2.75H3.40938L11.3875 13.1812Z"/>
                     </svg>
                   </a>
                 </li>
                 <li>
                   <a class="site-footer__social-link" href="#" aria-label="LinkedIn" title="LinkedIn">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M6.2 9.5H3.5V20h2.7V9.5ZM4.9 4A1.6 1.6 0 1 0 4.9 7.2 1.6 1.6 0 0 0 4.9 4ZM20.5 20h-2.7v-5.4c0-1.5-.5-2.5-1.8-2.5-.9 0-1.5.6-1.7 1.2-.1.2-.1.5-.1.8V20h-2.7s0-8.8 0-9.7h2.7v1.4c.4-.6 1.1-1.5 2.7-1.5 2 0 3.5 1.3 3.5 4.1V20Z"/>
+                    <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M14.6393 9.14601V14.0653H11.7873V9.47534C11.7873 8.32201 11.3747 7.53534 10.3427 7.53534C9.55466 7.53534 9.08533 8.06601 8.87933 8.57868C8.804 8.76201 8.78466 9.01734 8.78466 9.27401V14.0653H5.93133C5.93133 14.0653 5.97 6.29201 5.93133 5.48601H8.78466V6.70201L8.766 6.73001H8.78466V6.70201C9.16333 6.11868 9.84 5.28468 11.3553 5.28468C13.232 5.28468 14.6393 6.51134 14.6393 9.14601ZM2.94733 1.35068C1.97199 1.35068 1.33333 1.99068 1.33333 2.83268C1.33333 3.65601 1.95333 4.31534 2.90999 4.31534H2.92866C3.924 4.31534 4.542 3.65601 4.542 2.83268C4.52466 1.99068 3.924 1.35068 2.94733 1.35068ZM1.50266 14.0653H4.35466V5.48601H1.50266V14.0653Z"/>
                     </svg>
                   </a>
                 </li>
                 <li>
-                  <a class="site-footer__social-link" href="#" aria-label="TikTok" title="TikTok">
-                    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M16.5 3c.4 2.4 1.8 4 4.2 4.3v3.1c-1.5 0-2.9-.4-4.2-1.2v5.7a6.1 6.1 0 1 1-6.1-6.1c.3 0 .7 0 1 .1v3.2a2.9 2.9 0 1 0 2 2.8V3h3.1Z"/>
+                  <a class="site-footer__social-link" href="#" aria-label="YouTube" title="YouTube">
+                    <svg class="icon" width="16" height="16" viewBox="0 0 310 310" fill="currentColor" aria-hidden="true">
+                      <path d="M297.917 64.645c-11.19-13.302-31.85-18.728-71.306-18.728H83.386c-40.359 0-61.369 5.776-72.517 19.938C0 79.663 0 100.008 0 128.166v53.669c0 54.551 12.896 82.248 83.386 82.248h143.226c34.216 0 53.176-4.788 65.442-16.527C304.633 235.518 310 215.863 310 181.835v-53.669c0-29.695-.841-50.16-12.083-63.521m-98.896 97.765-65.038 33.991a9.997 9.997 0 0 1-14.632-8.863v-67.764a10 10 0 0 1 14.609-8.874l65.038 33.772a10 10 0 0 1 .023 17.738"/>
                     </svg>
                   </a>
                 </li>
@@ -1730,28 +2205,49 @@
           </div>
         </div>
 
-        <div class="site-footer__disclaimer">
-          <h2 class="site-footer__disclaimer-title">
-            <svg class="site-footer__disclaimer-icon icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.75"/>
-              <path d="M12 10.5v5M12 7.75h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-            </svg>
-            Disclaimer
-          </h2>
-          <p class="site-footer__disclaimer-text">
-            The information provided on Newsfy is for general informational and educational purposes only.
-            While we strive for accuracy and timeliness, we do not guarantee the completeness, reliability,
-            or suitability of any content. Readers are advised to verify any information before making
-            decisions based on it.
-          </p>
+        <div class="row gy-4 site-footer__mid">
+          <div class="col-lg-7 site-footer__disclaimer">
+            <h2 class="site-footer__disclaimer-title">
+              <svg class="site-footer__disclaimer-icon icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M12 10.5v5M12 7.75h.01" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+              </svg>
+              Disclaimer
+            </h2>
+            <p class="site-footer__disclaimer-text">
+              The information provided on Newsfy is for general informational and educational purposes only.
+              While we strive for accuracy and timeliness, we do not guarantee the completeness, reliability,
+              or suitability of any content. Readers are advised to verify any information before making
+              decisions based on it.
+            </p>
+          </div>
+
+          <div class="col-lg-5 site-footer__newsletter">
+            <h2 class="site-footer__newsletter-title">Newsletter</h2>
+            <p class="site-footer__newsletter-text">
+              Get the latest stories and top headlines delivered to your inbox every week.
+            </p>
+            <form class="site-footer__newsletter-form" action="#" method="post">
+              <label class="visually-hidden" for="footer-newsletter-email">Email address</label>
+              <input
+                class="site-footer__newsletter-input"
+                id="footer-newsletter-email"
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+                required
+              />
+              <button class="site-footer__newsletter-btn" type="submit">Subscribe</button>
+            </form>
+          </div>
         </div>
 
         <div class="site-footer__bottom">
           <a class="site-footer__brand" href="/" title="Newsfy">
-            <span class="site-footer__brand-mark" aria-hidden="true"></span>
-            <span class="site-footer__brand-text">Newsfy</span>
+            <img class="site-footer__logo" src="assets/images/logo-white.svg" alt="Newsfy" width="135" height="33" />
           </a>
-          <p class="site-footer__copy">© 2025 Newsfy. All Rights Reserved.</p>
+          <p class="site-footer__copy">© 2026 Newsfy. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

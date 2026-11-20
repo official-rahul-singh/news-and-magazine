@@ -7,9 +7,11 @@ import 'swiper/css/pagination'
 import '../css/style.scss'
 
 const header = document.querySelector('.header')
-const nav = document.querySelector('#primary-nav')
-const navToggle = document.querySelector('[data-nav-toggle]')
 const themeToggle = document.querySelector('[data-theme-toggle]')
+const sidebar = document.querySelector('#site-sidebar')
+const sidebarToggle = document.querySelector('[data-sidebar-toggle]')
+const sidebarClose = document.querySelector('[data-sidebar-close]')
+const sidebarBackdrop = document.querySelector('[data-sidebar-backdrop]')
 const dropdownItems = document.querySelectorAll('.navigations__item--dropdown')
 
 function setExpanded(button, expanded) {
@@ -17,18 +19,28 @@ function setExpanded(button, expanded) {
   button.setAttribute('aria-expanded', String(expanded))
 }
 
-function closeMobileNav() {
-  if (!nav || !navToggle) return
-  nav.classList.remove('navigations--open')
-  setExpanded(navToggle, false)
-  navToggle.setAttribute('aria-label', 'Open menu')
+function setSidebarOpen(open) {
+  if (!sidebar || !sidebarToggle) return
+
+  sidebar.classList.toggle('is-open', open)
+  sidebar.setAttribute('aria-hidden', String(!open))
+  setExpanded(sidebarToggle, open)
+  sidebarToggle.setAttribute('aria-label', open ? 'Close sidebar' : 'Open sidebar')
+  document.body.classList.toggle('sidebar-open', open)
+
+  if (sidebarBackdrop) {
+    sidebarBackdrop.hidden = !open
+    sidebarBackdrop.classList.toggle('is-open', open)
+  }
 }
 
-function toggleMobileNav() {
-  if (!nav || !navToggle) return
-  const isOpen = nav.classList.toggle('navigations--open')
-  setExpanded(navToggle, isOpen)
-  navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu')
+function closeSidebar() {
+  setSidebarOpen(false)
+}
+
+function toggleSidebar() {
+  if (!sidebar) return
+  setSidebarOpen(!sidebar.classList.contains('is-open'))
 }
 
 function closeDropdowns(exceptItem) {
@@ -40,11 +52,23 @@ function closeDropdowns(exceptItem) {
   })
 }
 
-function initNavToggle() {
-  if (!navToggle) return
+function initSidebar() {
+  if (!sidebarToggle) return
 
-  navToggle.addEventListener('click', () => {
-    toggleMobileNav()
+  sidebarToggle.addEventListener('click', () => {
+    toggleSidebar()
+  })
+
+  sidebarClose?.addEventListener('click', () => {
+    closeSidebar()
+  })
+
+  sidebarBackdrop?.addEventListener('click', () => {
+    closeSidebar()
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeSidebar()
   })
 }
 
@@ -63,24 +87,35 @@ function initDropdowns() {
   })
 }
 
+function applyTheme(theme) {
+  const root = document.documentElement
+  const next = theme === 'dark' ? 'dark' : 'light'
+  root.setAttribute('data-bs-theme', next)
+  localStorage.setItem('theme', next)
+
+  if (!themeToggle) return
+  themeToggle.setAttribute(
+    'aria-label',
+    next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+  )
+  themeToggle.setAttribute('aria-pressed', String(next === 'dark'))
+}
+
 function initThemeToggle() {
   if (!themeToggle) return
 
   const root = document.documentElement
   const stored = localStorage.getItem('theme')
-  if (stored === 'dark') {
-    root.setAttribute('data-bs-theme', 'dark')
-  }
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const current =
+    root.getAttribute('data-bs-theme') ||
+    (stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light')
+
+  applyTheme(current)
 
   themeToggle.addEventListener('click', () => {
     const isDark = root.getAttribute('data-bs-theme') === 'dark'
-    const next = isDark ? 'light' : 'dark'
-    if (next === 'dark') {
-      root.setAttribute('data-bs-theme', 'dark')
-    } else {
-      root.removeAttribute('data-bs-theme')
-    }
-    localStorage.setItem('theme', next)
+    applyTheme(isDark ? 'light' : 'dark')
   })
 }
 
@@ -100,10 +135,6 @@ function initOutsideClick() {
     const target = event.target
     if (!(target instanceof Element)) return
 
-    if (nav && navToggle && !nav.contains(target) && !navToggle.contains(target)) {
-      closeMobileNav()
-    }
-
     if (!target.closest('.navigations__item--dropdown')) {
       closeDropdowns()
     }
@@ -113,38 +144,34 @@ function initOutsideClick() {
 function initResizeClose() {
   window.addEventListener('resize', () => {
     if (window.matchMedia('(min-width: 992px)').matches) {
-      closeMobileNav()
       closeDropdowns()
     }
   })
 }
 
-const tickerHeadlines = [
-  'Bitcoin Lightning Payment Volume Increased 400% In A Year',
-  'Global Markets Rally As Inflation Cools Faster Than Expected',
-  'AI Startups Raise Record Funding In Emerging Tech Hubs',
-]
-
 function initTicker() {
-  const headline = document.querySelector('[data-ticker-headline]')
-  const prevBtn = document.querySelector('[data-ticker-prev]')
-  const nextBtn = document.querySelector('[data-ticker-next]')
-  if (!headline || !prevBtn || !nextBtn) return
+  const el = document.querySelector('[data-ticker-swiper]')
+  if (!el) return
 
-  let index = 0
+  const prevEl = document.querySelector('[data-ticker-prev]')
+  const nextEl = document.querySelector('[data-ticker-next]')
 
-  const render = () => {
-    headline.textContent = tickerHeadlines[index]
-  }
-
-  prevBtn.addEventListener('click', () => {
-    index = (index - 1 + tickerHeadlines.length) % tickerHeadlines.length
-    render()
-  })
-
-  nextBtn.addEventListener('click', () => {
-    index = (index + 1) % tickerHeadlines.length
-    render()
+  new Swiper(el, {
+    modules: [Autoplay, Navigation],
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    speed: 450,
+    autoHeight: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    navigation: {
+      prevEl,
+      nextEl,
+    },
   })
 }
 
@@ -218,44 +245,53 @@ function initPopularTags() {
   })
 }
 
+function showFilterPanel(attr, key) {
+  document.querySelectorAll(`[${attr}]`).forEach((panel) => {
+    const active = panel.getAttribute(attr) === key
+    panel.hidden = !active
+    panel.setAttribute('aria-hidden', active ? 'false' : 'true')
+  })
+}
+
+function initFilterTabs(selector, panelAttr) {
+  const groups = new Map()
+
+  document.querySelectorAll(selector).forEach((button) => {
+    const list = button.closest('[role="tablist"]')
+    if (!list) return
+    if (!groups.has(list)) groups.set(list, [])
+    groups.get(list).push(button)
+  })
+
+  groups.forEach((filters) => {
+    filters.forEach((button) => {
+      button.addEventListener('click', () => {
+        filters.forEach((item) => {
+          const active = item === button
+          item.classList.toggle('tech-news__filter--active', active)
+          item.setAttribute('aria-selected', active ? 'true' : 'false')
+        })
+
+        const value =
+          button.getAttribute('data-tech-filter') || button.getAttribute('data-latest-filter')
+        if (value) showFilterPanel(panelAttr, value)
+      })
+    })
+  })
+}
+
 function initTechFilters() {
-  const filters = document.querySelectorAll('[data-tech-filter]')
-  if (!filters.length) return
-
-  filters.forEach((button) => {
-    button.addEventListener('click', () => {
-      filters.forEach((item) => {
-        item.classList.toggle('tech-news__filter--active', item === button)
-      })
-    })
-  })
+  initFilterTabs('[data-tech-filter]', 'data-tech-panel')
+  showFilterPanel('data-tech-panel', 'science')
 }
 
-function initSpotlightsTabs() {
-  const tabs = document.querySelectorAll('[data-spotlight-tab]')
-  const panels = document.querySelectorAll('[data-spotlight-panel]')
-  if (!tabs.length || !panels.length) return
-
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.spotlightTab
-
-      tabs.forEach((item) => {
-        const active = item === tab
-        item.classList.toggle('spotlights__tab--active', active)
-        item.setAttribute('aria-selected', String(active))
-      })
-
-      panels.forEach((panel) => {
-        const active = panel.dataset.spotlightPanel === target
-        panel.classList.toggle('is-active', active)
-        panel.hidden = !active
-      })
-    })
-  })
+function initLatestFilters() {
+  initFilterTabs('[data-latest-filter]', 'data-latest-panel')
+  showFilterPanel('data-latest-panel', 'science')
 }
 
-initNavToggle()
+
+initSidebar()
 initDropdowns()
 initThemeToggle()
 initStickyHeader()
@@ -265,38 +301,4 @@ initTicker()
 initFeaturedSlider()
 initPopularTags()
 initTechFilters()
-initSpotlightsTabs()
 initLatestFilters()
-initMoreNewsDots()
-
-function initLatestFilters() {
-  const filters = document.querySelectorAll('[data-latest-filter]')
-  if (!filters.length) return
-
-  filters.forEach((button) => {
-    button.addEventListener('click', () => {
-      filters.forEach((item) => {
-        item.classList.toggle('latest-block__filter--active', item === button)
-      })
-    })
-  })
-}
-
-function initMoreNewsDots() {
-  const dots = document.querySelectorAll('[data-more-dot]')
-  if (!dots.length) return
-
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      dots.forEach((item) => {
-        const active = item === dot
-        item.classList.toggle('more-news__dot--active', active)
-        if (active) {
-          item.setAttribute('aria-current', 'true')
-        } else {
-          item.removeAttribute('aria-current')
-        }
-      })
-    })
-  })
-}

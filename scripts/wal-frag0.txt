@@ -1,0 +1,67 @@
+C title="LifeStyle">#LifeStyle</a>
+                </div>
+                <div class="swiper-slide" style="margin-right: 10px;">
+                  <a class="popular-tags__tag" href="#" title="News">#News</a>
+                </div>
+                <div class="swiper-slide" style="margin-right: 10px;">
+                  <a class="popular-tags__tag" href="#" title="Movies">#Movies</a>
+                </div>
+                <div class="swiper-slide" style="margin-right: 10px;">
+                  <a class="popular-tags__tag" href="#" title="Nature">#Nature</a>
+                </div>
+                <div class="swiper-slide" style="margin-right: 10px;">
+                  <a class="popular-tags__tag" href="#" title="Magazine">#Magazine</a>
+                </div>
+                <div class="swiper-slide" style="margin-right: 10px;">
+                  <a class="popular-tags__tag" href="#" title="Inspiration">#Inspiration</a>
+                </div>
+                <div class="swiper-slide" style="margin-right: 10px;">
+                  <a class="popular-tags__tag" href="#" title="Popular">#Popular</a>
+                </div>
+                <div class="swiper-slide" style="margin-right: 10px;">
+                  <a class="popular-tags__tag" href="#" title="Travel">#Travel</a>
+                </div>
+                <div class="swiper-slide" style="margin-right: 10px;">
+                  <a class="popular-tags__tag" href="#" title="Sports">#Sports</a>
+                </div>
+                <div class="swiper-slide" style="margin-right: 10px;">
+                  <a class="popular-tags__tag" href="#" title="Business">#Business</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="popular-tags__nav">
+              <button class="popular-tags__nav-btn" type="button" aria-label="Previous tags" data-tags-prev="">
+                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M15 6 9 12l6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="popular-tags__nav-btn" type="button" aria-label="Next tags" data-tags-next="">
+                <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+icon highlight chaiye"},{"unixMs":1795166668606,"generationUUID":"0645d810-b6d2-4f65-a04a-9a63035d2cb2","type":"composer","textDescription":"aise nhi jis side move krna hai vho wala fill mai aye"},{"unixMs":1795166734101,"generationUUID":"dab5a685-161a-4fac-b5db-522b5163d6cf","type":"composer","textDescription":"<div class="container">
+          <div class="tech-news__head">
+            <h2 class="tech-news__badge" id="tech-news-title">
+              <span class="tech-news__badge-dot" aria-hidden="true"></span>
+              Latest News
+            </h2>
+            <ul class="tech-news__filters" role="list">
+              <li>
+                <button class="tech-news__filter" type="button" data-tech-filter="">Science</button>
+              </li>
+              <li>
+                <button class="tech-news__filter tech-news__filter--active" type="button" data-tech-filter="">Fashion</button>
+              </li>
+              <li>
+                <button class="tech-news__filter" type="button" data-tech-filter="">Sports</button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-sm-6 col-xl-3">
+              <a class="cover-card cover-card--tech" href="#
